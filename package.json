@@ -1,0 +1,35 @@
+{
+  "name": "book-browser",
+  "version": "1.0.0",
+  "description": "A website to search for books, which allows you to know their prices, as well as being able to filter them by genre, popularity and date.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucioFex/book-search.git"
+  },
+  "keywords": [
+    "books",
+    "browser",
+    "search",
+    "genre",
+    "prices",
+    "book",
+    "cover"
+  ],
+  "author": "Luciano Esteban",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LucioFex/book-search/issues"
+  },
+  "homepage": "https://github.com/LucioFex/book-search#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15"
+  }
+}
