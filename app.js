@@ -1,6 +1,6 @@
 "use strict";
 
-// Frameworks and Environment Variables
+// Frameworks and Environment Variables Tool
 const express = require("express");
 const app = express();
 
