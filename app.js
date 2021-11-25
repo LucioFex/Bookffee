@@ -1,10 +1,15 @@
 "use strict";
 
-require("dotenv").config()
+// Frameworks and Environment Variables
 const express = require("express");
+const app = express();
 
-const app = express()
-app.set("port", process.env.PORT || 3000)
+require("dotenv").config();
+app.set("port", process.env.PORT || 3000);
+
+// Body-Parser (integrated in Express)
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
 // Templates Engine:
 app.set("view engine", "ejs");
@@ -13,15 +18,10 @@ app.set("views", __dirname + "/views");
 app.use(express.static(__dirname + "/public"));
 
 // Web routes
-// app.use("/", require("./router/webRoutes"));
-// app.use("/pets", require("./router/pets"));
-
-app.use((req, res, next) => {
-    res.status(404).render("page-not-found.html")  // Ejs
-});
+app.use("/", require("./routes/index"));
+// app.use("/book", require("./router/book"));  Implement later...
 
 
 app.listen(app.get("port"), () => {
     console.log(`App working on the Port ${app.get("port")}`);
 });
-

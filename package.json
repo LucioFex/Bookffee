@@ -2,10 +2,10 @@
   "name": "book-browser",
   "version": "1.0.0",
   "description": "A website to search for books, which allows you to know their prices, as well as being able to filter them by genre, popularity and date.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
