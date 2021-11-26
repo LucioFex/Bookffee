@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 // Rendering of the main pages (home, categories, popular and recent)
-const routes = {
+const routes = {  // Separated by -> route: [filename, ejs-render]
     "/": ["home", "Home"],
     "/categories": ["categories", "Categories"],
     "/popular": ["most-popular", "Most Popular"],
