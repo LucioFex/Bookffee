@@ -6,3 +6,24 @@
 * {
     font-family: "Baskerville";
 }
+
+/* NavBar */
+
+nav {
+    background: #0F2027;
+}
+
+#search-icon {
+    width: 40px;
+    height: auto;
+    margin-left: 5px;
+    transition: 0.1s ease-out;
+    cursor: pointer;
+    border-radius: 10%;
+    background: #142b35;
+}
+
+#search-icon:hover {
+    transform: scale(1.1);
+    background: #1c3946;
+}
