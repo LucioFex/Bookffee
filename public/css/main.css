@@ -3,27 +3,79 @@
     src: url("../fonts/LibreBaskerville-Regular.ttf");
 }
 
-* {
-    font-family: "Baskerville";
+@font-face {
+    font-family: "Pacifico";
+    src: url("../fonts/Pacifico-Regular.ttf");
 }
 
-/* NavBar */
+html, body {
+    font-family: "Baskerville", "Georgia", "Arial";
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    top: 0;
+    left: 0;
+}
 
 nav {
     background: #0F2027;
 }
 
-#search-icon {
-    width: 40px;
+#navbar-sections {
+    list-style-type: none;
+}
+
+#navbar-sections li a{
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+#navbar-sections li a:hover {
+    color: #ffcb5c !important;
+}
+
+.navbar {
+    padding: 3rem 2rem;
+    height: 0;
+    min-height: 12vh;
+}
+
+.navbar .navbar-brand a {
+    padding: 1rem 0;
+    display: block;
+    text-decoration: none;
+}
+
+.navbar-brand {
+    font-size: 40px;
+    font-weight: 500;
+    font-family: "Pacifico", "Baskerville", "Georgia", "Arial";
+    color: #ffcb5c !important;
+}
+
+#logo-icon {
+    width: 60px;
     height: auto;
-    margin-left: 5px;
-    transition: 0.1s ease-out;
+    margin-right: 5px;
+}
+
+#search-icon {
+    color: white;
     cursor: pointer;
-    border-radius: 10%;
-    background: #142b35;
+    font-size: 35px;
+    margin-left: 5px;
+    border-radius: 15%;
+    transition: 0.15s ease-in-out;
 }
 
 #search-icon:hover {
     transform: scale(1.1);
-    background: #1c3946;
+    color: #ffcb5c;
+}
+
+@media(max-width: 991px) {
+    .navbar-brand {
+        font-size: 19px;
+    }
 }
