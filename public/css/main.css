@@ -28,7 +28,17 @@ nav {
 #navbar-sections li a{
     text-decoration: none;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 19.5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#navbar-section li a:first-child {
+    margin-left: 0px;
+}
+
+#navbar-section li a:last-child {
+    margin-right: 0px;
 }
 
 #navbar-sections li a:hover {
@@ -36,8 +46,7 @@ nav {
 }
 
 .navbar {
-    padding: 3rem 2rem;
-    height: 0;
+    padding: 0rem 2rem;
     min-height: 12vh;
 }
 
@@ -54,6 +63,52 @@ nav {
     color: #ffcb5c !important;
 }
 
+.navbar-toggler {
+    background: #ffcb5c;
+    border: none;
+    padding: 10px 6px;
+    outline: none;
+}
+
+.navbar-toggler span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border: 1px;
+    background: #0F2027;
+}
+
+.navbar-toggler span + span {
+    width: 18px;
+    margin-top: 4px;
+    margin-left: 4px;
+}
+
+.navbar-toggler span + span {
+    width: 10px;
+    margin-left: 4px;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding: 2.6rem 1.2rem;
+    font-size: 1.4rem;
+    position: relative;
+    transition: 0.15s ease-in-out;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link:hover {
+    border-top: 4px solid #ffcb5c;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link.active {
+    border-top: 4px solid #ffcb5c;
+    color: #ffcb5c;
+}
+
+#search {
+    padding: 0.75rem;
+}
+
 #logo-icon {
     width: 60px;
     height: auto;
@@ -63,10 +118,10 @@ nav {
 #search-icon {
     color: white;
     cursor: pointer;
-    font-size: 35px;
+    font-size: 43px;
     margin-left: 5px;
     border-radius: 15%;
-    transition: 0.15s ease-in-out;
+    transition: 0.09s ease-in-out;
 }
 
 #search-icon:hover {
@@ -74,8 +129,25 @@ nav {
     color: #ffcb5c;
 }
 
+#search-icon:active {
+    transform: scale(0.9);
+    color: #fbb723;
+}
+
 @media(max-width: 991px) {
     .navbar-brand {
-        font-size: 19px;
+        font-size: 40px;
+    }
+
+    #search-icon, #logo-icon {
+        display: none;
+    }
+
+    #search {
+        margin-bottom: 2rem;
+    }
+
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding: 1.8rem 1.2rem;
     }
 }

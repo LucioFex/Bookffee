@@ -8,16 +8,19 @@
                 data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between"
                 id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="navbar-sections">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page"
+                        <a class="nav-link<%=home%>" aria-current="page"
                             href="#">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#"
+                        <a class="nav-link<%=categories%> dropdown-toggle" href="#"
                             id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Categories
@@ -36,11 +39,11 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page"
+                        <a class="nav-link<%=popular%>" aria-current="page"
                             href="#">Popular</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page"
+                        <a class="nav-link<%=recent%>" aria-current="page"
                             href="#">Recent</a>
                     </li>
                 </ul>

@@ -1,4 +1,11 @@
-<%- include('templates/head') %>  <!-- Also includes the NavBar-->
+<%- include(
+    'templates/head', {
+        home: "",
+        categories: "",
+        popular: "",
+        recent: " recent"
+        }) %>  <!-- Also includes the NavBar-->
+
     <h1>
         <%= sectionTitle %>
     </h1>
