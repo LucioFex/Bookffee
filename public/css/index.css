@@ -1,0 +1,23 @@
+@import url("bootstrap.min.css");
+@import url("navbar.css");
+@import url("footer.css");
+
+@font-face {
+    font-family: "Baskerville";
+    src: url("../fonts/LibreBaskerville-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Pacifico";
+    src: url("../fonts/Pacifico-Regular.ttf");
+}
+
+html, body {
+    font-family: "Baskerville", "Georgia", "Arial";
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    top: 0;
+    left: 0;
+}
+
