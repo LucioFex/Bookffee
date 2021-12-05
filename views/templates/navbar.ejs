@@ -1,8 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-md">
-            <img id="logo-icon" src="src/logo.png">
-            <a class="navbar-brand" href="#">Bookffee</a>
+            <a class="navbar-brand" href="/"><img id="logo-icon" src="src/logo.png">Bookffee</a>
             <button class="navbar-toggler" type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent"
@@ -17,34 +16,19 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="navbar-sections">
                     <li class="nav-item">
                         <a class="nav-link<%=home%>" aria-current="page"
-                            href="#">Home</a>
+                            href="/">Home</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link<%=categories%> dropdown-toggle" href="#"
-                            id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Categories
-                        </a>
-                        <ul class="dropdown-menu"
-                            aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#">Another
-                                    action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else
-                                    here</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link<%=categories%>" aria-current="page"
+                            href="/categories">Categories</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link<%=popular%>" aria-current="page"
-                            href="#">Popular</a>
+                            href="/popular">Popular</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link<%=recent%>" aria-current="page"
-                            href="#">Recent</a>
+                            href="/recent">Recent</a>
                     </li>
                 </ul>
                 <form class="navbar-nav ms-auto">
