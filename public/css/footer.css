@@ -1,28 +1,25 @@
 #site-footer {
     padding: 5em 0;
     background: #0F2027;
-    font-size: 14px;
-    color: #272727;
+    font-size: 16px;
+    color: #f0f0f0;
 }
 
 #site-footer p:last-child {
+    color: #f0f0f0;
     margin-bottom: 0;
 }
 
 #site-footer a {
     color: #f0f0f0;
-    border-bottom: 1px solid transparent;
-}
-
-#site-footer a:hover {
-    color: #f0f0f0;
-    border-bottom: 1px solid #f0b538;
+    text-decoration: none;
 }
 
 #site-footer h2 {
-    font-size: 22px;
+    font-size: 30px;
     margin-bottom: 28px;
-    letter-spacing: 0.5em;
+    letter-spacing: 0.15em;
+    font-weight: bolder;
     color: #f0f0f0;
 }
 
@@ -33,15 +30,36 @@
 
 .footer-social a {
     line-height: 0;
-    margin: 0 5px 5px 0;
+    margin: 0 32px 0px 0;
     width: 30px;
     text-align: center;
     display: inline-block;
-    transition: 0.06s ease-in-out;
 }
 
-/* .footer-social li a i {  Continue here
-    width: 50px;
+.footer-social li a i {
+    transition: 0.17s ease-in-out;
+    font-size: 45px;
+}
+
+#email {
+    margin-left: 3px;
+    font-size: 18px;
+    cursor: pointer;
+    width: fit-content;
+    transition: 0.17s ease-in-out;
+}
+
+.footer-text li a {
+    transition: 0.17s ease-in-out;
+    font-size: 19px;
+}
+
+.footer-text li a:hover, .footer-social li a i:hover, #email:hover {
+    transform: scale(1.13);
+    color: #ffcb5c !important;
+}
+
+#footer-logo {
+    width: 79%;
     height: auto;
-    color: blue;
-} */
+}
