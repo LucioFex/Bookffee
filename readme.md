@@ -20,7 +20,6 @@
 
 ## How to run:
 
-- Due to the [Fetch API](https://developer.mozilla.org/es/docs/Web/API/Fetch_API), you have to run a server (or a local server) in any port.
 - You have to run a server (deploying or a local one).
     - You can select the port on which you want to do this by modifying the `.env` file, using the `.env-example` file as a base.
 - Once you set the port, you can run the server by typing in the command line "npm run start" to run the app.js file with Node.js, or "npm run dev" to do it with Nodemon.
