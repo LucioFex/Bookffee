@@ -1,6 +1,6 @@
 {
-  "name": "book-browser",
-  "version": "1.0.0",
+  "name": "Bookffee",
+  "version": "0.2.1",
   "description": "A website to search for books, which allows you to know their prices, as well as being able to filter them by genre, popularity and date.",
   "main": "app.js",
   "scripts": {
