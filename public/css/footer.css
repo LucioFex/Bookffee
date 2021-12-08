@@ -21,6 +21,26 @@
     letter-spacing: 0.15em;
     font-weight: bolder;
     color: #f0f0f0;
+    position: relative;
+    display: inline-block;
+}
+
+#site-footer h2::before {
+    content: '';
+    position: absolute;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffcb5c;
+    transform-origin: bottom right;
+    transition: transform 0.45s ease-in-out;
+}
+
+#site-footer h2:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 #site-footer .footer-link li {
@@ -60,6 +80,6 @@
 }
 
 #footer-logo {
-    width: 82%;
+    width: 85%;
     height: auto;
 }

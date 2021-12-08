@@ -2,7 +2,7 @@
     <img src="public/src/readme-logo.png" alt="Bookffee logo" width="450" />
 </p>
 
-<h1 align="center">📚 Browse many Books by Category, Popularity, and More 💀</h1>
+<h1 align="center">📚 Browse many Books by Category, Popularity and More 💀</h1>
 
 <br>
 
