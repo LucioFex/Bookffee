@@ -1,45 +1,27 @@
-const btnDelete = document.getElementById("btnDelete");
-const formUpdate = document.getElementById("formEdit");
+/* JS Document */
 
+const contactButton = document.getElementById("email");
+const copiedEmailMessage = document.getElementById("copiedMessage");
 
-async function myButtonDelete() {
-    const myId = btnDelete.dataset.id;
-
-    try {
-        const data = await fetch(`/pets/${myId}`, {method: "delete"});
-        const res = await data.json();
-
-        if (res.status) {window.location.href = "/pets"}  // Redirect the user
-    } catch (error) {
-        console.log("YEAH BABY, you have a new error in the family:\n", error);
-    }
+const setUp = () => {
+    /* Function to execute before the DOM is loaded */
+    contactButton.addEventListener("click", copyEmailToClipboard, false);
 };
 
-async function myFormUpdate(e) {
-    e.preventDefault();
+const copyEmailToClipboard = () => {
+    /* Add docs later... */
 
-    const id = formUpdate.dataset.id;
-    const name = formUpdate.elements["name"].value;
-    const description = document.querySelector("#descriptionInput").value;
-    // const description = document.getElementById("descriptionInput").value;
+    copiedEmailMessage.style.opacity = "100%";
+    contactButton.removeEventListener("click", copyEmailToClipboard, false);
 
-    try {
-        const data = await fetch(`/pets/${id}`, {
-            method: "put",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({name, description})  // == body: {name: name, description: description}
-        });
+    setTimeout(() => {
+        copiedEmailMessage.style.opacity = "0%";
+        contactButton.addEventListener("click", copyEmailToClipboard, false);
+    }, 3500);
 
-        const res = await data.json();
-        if (res.status) {window.location.href = "/pets"}  // Redirect the user
-
-    } catch (error) {
-        console.log("You made a mistake, wachín:\n", error);
-    }
-}
+    navigator.clipboard.writeText("luciano1d2esteban@gmail.com");
+};
 
 
-try {
-    btnDelete.addEventListener("click", myButtonDelete, false);
-    formUpdate.addEventListener("submit", myFormUpdate, false);
-} catch {}
+// Waits for the DOM to start the script
+window.addEventListener('load', setUp, false);

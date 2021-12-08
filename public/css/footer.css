@@ -67,6 +67,7 @@
     cursor: pointer;
     width: fit-content;
     transition: 0.17s ease-in-out;
+    position: relative;
 }
 
 .footer-text li a {
@@ -74,12 +75,50 @@
     font-size: 19px;
 }
 
-.footer-text li a:hover, .footer-social li a i:hover, #email:hover {
+#footer-logo {
+    width: 85%;
+    height: auto;
+}
+
+.footer-text li a:hover, .footer-social li a i:hover {
     transform: scale(1.13);
     color: #ffcb5c !important;
 }
 
-#footer-logo {
-    width: 85%;
-    height: auto;
+#email:hover {
+    color: #ffcb5c !important;
+}
+
+#email:active {
+    color: #ffe75c !important;
+}
+
+#email-section {
+    display: flex;
+}
+
+#copiedMessage {
+    transform: scale(1.13);
+    position: relative;
+    top: -5px;
+    left: 20px;
+    color: #0F2027 !important;
+    font-weight: bold;
+    background: #ffcb5c;
+    padding: 8px 10px;
+    border-radius: 20px;
+    font-size: 15px;
+    opacity: 0%;
+    transition: 0.3s ease-in-out;
+}
+
+#copiedMessage:after {
+    content: "";
+    position: absolute;
+    top: 14.5px;
+    left: -3px;
+    width: 10px;
+    height: 10px;
+    background: #ffcb5c;
+    transform: rotate(45deg);
 }

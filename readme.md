@@ -6,7 +6,7 @@
 
 <br>
 
-### Bookffee is a website to search for books, which allows you to know their prices, as well as being able to filter them by genre, popularity and date.
+### Bookffee is a website to search for books, which allows you to know their prices and synopses, as well as being able to filter them by genre, popularity and date.
 
 ## Technologies used in the project:
 
@@ -38,7 +38,7 @@ the opening of an issue to check the change you want to make.
 
 ## Project Status:
 
-### `Version: 0.2.1` | `Still in Development`
+### `Version: 0.2.6` | `Still in Development`
 <!-- <h3><i>You can access Bookffee by clicking <a href="" target="_blank">here</a>.</i></h3> -->
 
 ## License
