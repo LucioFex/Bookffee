@@ -1,4 +1,40 @@
-.recommended-books div img{
+.latest-books {
+    color: #f0f0f0;
+}
+
+.latest-books:first-child h3 i {
+    color: #ffcb5c;
+}
+
+.latest-books:nth-child(2) h3 i {
+    color: #c31432;
+}
+
+.latest-books:last-child h3 i {
+    color: #7303c0;
+}
+
+.latest-books div div img {
     width: 150px;
-    height: 247.5px;
+    height: 246px;
+    border-radius: 4%;
+    border: 1px solid #182f3a;
+}
+
+.latest-books div div div h4 {
+    font-size: 17.5px;
+    border-bottom: 1px solid #f0f0f01f;
+}
+
+.latest-books div a {
+    width: 100%;
+    background: #283033;
+    border-color: #1f292c;
+    text-decoration: none;
+    color: #f0f0f0;
+}
+
+.latest-books div a:hover {
+    background: #f0bc4d;
+    border-color: #ecb949;
 }

@@ -1,5 +1,5 @@
 nav {
-    background: #0F2027;
+    background: #182f3a;
 }
 
 #navbar-sections {
@@ -56,7 +56,7 @@ nav {
     width: 22px;
     height: 2px;
     border: 1px;
-    background: #0F2027;
+    background: #182f3a;
 }
 
 .navbar-toggler span + span {
