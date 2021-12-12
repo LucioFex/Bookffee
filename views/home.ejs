@@ -3,17 +3,22 @@
         home: " active",
         categories: "",
         popular: "",
-        recent: ""
+        recent: "",
+        pageStyle: "css/home.css"
         }) %>  <!-- Also includes the NavBar-->
 
     <div class="container-md">
-        <header class="my-5 pb-3 text-center border-bottom border-2">
-            <h1><%= sectionTitle %></h1>
-        </header>
-
-        <section>
-            <!-- Show books in 3 rows of 4 books per one-->
+        <section id="main-section">
+            <article>
+                <!-- Show books in 3 rows of 4 books per one-->
+            </article>
+        </section>
+        <section id="pagination-section" class="mb-5 text-center">
+            <!-- Pagination Section -->
+            <button class="my-5">< Previous</button>
+            <!-- Numbers of the page -->
+            <button class="my-5">Next ></button>
         </section>
     </div>
-
+    <%- include("templates/recommended-books") %>
     <%- include("templates/footer") %>
