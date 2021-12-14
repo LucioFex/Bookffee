@@ -10,15 +10,72 @@
     <div class="container-md">
         <section id="main-section">
             <article>
-                <!-- Show books in 3 rows of 4 books per one-->
+                <div class="row text-center justify-content-evenly">
+                    <div class="col-md-auto my-3">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/81r4acWAaCL.jpg" alt="Sample Book">
+                        <p class="mt-1">Doctor Sleep</p>
+                    </div>
+                    <div class="col-md-auto my-3">
+                        <img src="https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/4736/9781473695498.jpg" alt="Sample Book">
+                        <p class="mt-1">The Lord of The Rings</i></p>
+                    </div>
+                    <div class="col-md-auto my-3">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/51b7XbfMIIL.jpg" alt="Sample Book">
+                        <p class="mt-1">Clean Code</p>
+                    </div>
+                    <div class="col-md-auto my-3">
+                        <img src="https://m.media-amazon.com/images/I/41GCo0OYHmL.jpg" alt="Sample Book">
+                        <p class="mt-1">The Fourth Monkey</p>
+                    </div>
+                </div>
+                <div class="row text-center justify-content-evenly">
+                    <div class="col-md-auto my-3">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/81r4acWAaCL.jpg" alt="Sample Book">
+                        <p class="mt-1">Doctor Sleep</p>
+                    </div>
+                    <div class="col-md-auto my-3">
+                        <img src="https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/4736/9781473695498.jpg" alt="Sample Book">
+                        <p class="mt-1">The Shining</p>
+                    </div>
+                    <div class="col-md-auto my-3">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/51b7XbfMIIL.jpg" alt="Sample Book">
+                        <p class="mt-1">Clean Code</p>
+                    </div>
+                    <div class="col-md-auto my-3">
+                        <img src="https://m.media-amazon.com/images/I/41GCo0OYHmL.jpg" alt="Sample Book">
+                        <p class="mt-1">The Fourth Monkey</p>
+                    </div>
+                </div>
+                <div class="row text-center justify-content-evenly">
+                    <div class="col-md-auto my-3">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/81r4acWAaCL.jpg" alt="Sample Book">
+                        <p class="mt-1">Doctor Sleep</p>
+                    </div>
+                    <div class="col-md-auto my-3">
+                        <img src="https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/4736/9781473695498.jpg" alt="Sample Book">
+                        <p class="mt-1">The Shining</p>
+                    </div>
+                    <div class="col-md-auto my-3">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/51b7XbfMIIL.jpg" alt="Sample Book">
+                        <p class="mt-1">Clean Code</p>
+                    </div>
+                    <div class="col-md-auto my-3">
+                        <img src="https://m.media-amazon.com/images/I/41GCo0OYHmL.jpg" alt="Sample Book">
+                        <p class="mt-1">The Fourth Monkey</p>
+                    </div>
+                </div>
             </article>
         </section>
-        <section id="pagination-section" class="mb-5 text-center">
+        <section id="pagination" class="mb-3 text-center">
             <!-- Pagination Section -->
-            <button class="my-5">< Previous</button>
-            <!-- Numbers of the page -->
-            <button class="my-5">Next ></button>
+            <a class="btn btn-warning my-4 me-2" href="/"><i class="fas fa-arrow-left"></i>&nbsp  Previous</a>
+            <a class="btn btn-warning my-4 mx-1" href="/">1</a>
+            <a class="btn btn-warning my-4 mx-1" href="/">2</a>
+            <a class="btn btn-warning my-4 mx-1" href="/">3</a>
+            <a class="btn btn-warning my-4 mx-1" href="/">. . .</a>
+            <a class="btn btn-warning my-4 ms-2" href="/">Next &nbsp<i class="fas fa-arrow-right"></i></a>
         </section>
     </div>
-    <%- include("templates/recommended-books") %>
+
+    <%- include("templates/latest-books") %>
     <%- include("templates/footer") %>

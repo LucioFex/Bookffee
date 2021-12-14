@@ -1,8 +1,34 @@
-#main-section {
-    height: 900px;
-    background: #725472;
+#main-section article div div {
+    text-decoration: none;
+    color: #f0f0f0;
 }
 
-#pagination-section {
-    background: #621f62;
+#main-section article div div img {
+    width: 245px;
+    height: calc(245px * 1.609);
+    border-radius: 4%;
+    border: 1px solid #182f3a;
+}
+
+#main-section article div p {
+    width: 245px;  /* Same as the img's width */
+    font-size: 21px;
+    font-weight: 250;
+}
+
+#pagination a {
+    background: #252d2f;
+    border-color: #1f292c;
+    text-decoration: none;
+    color: #f0f0f0;
+}
+
+#pagination a:first-child, #pagination a:last-child {
+    width: 150px;
+}
+
+#pagination a:hover {
+    background: #f0bc4d;
+    border-color: #ecb949;
+    color: #0f0f0f;
 }
