@@ -86,16 +86,22 @@ nav {
     color: #ffcb5c;
 }
 
-.navbar .dropdown-menu {
-    background: #182f3a;
+#navbar-dropdown {
+    background: #172e38;
 }
 
-.navbar .dropdown-item {
+#navbar-dropdown .dropdown-item {
     color: #f0f0f0 !important;
-    width: 95%;
+    font-size: 15px !important;
+    width: 190px;
 }
 
-.navbar .dropdown-item:hover {
+#navbar-dropdown li:last-child a{
+    width: 98%;
+}
+
+
+#navbar-dropdown .dropdown-item:hover {
     background-color: #152b35;
 }
 
