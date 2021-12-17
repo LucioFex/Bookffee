@@ -1,7 +1,8 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-md">
-            <a class="navbar-brand" href="/"><img id="logo-icon" src="src/logo.png">Bookffee</a>
+            <a class="navbar-brand" href="/"><img id="logo-icon"
+                    src="src/logo.png">Bookffee</a>
             <button class="navbar-toggler" type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent"
@@ -13,14 +14,29 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between"
                 id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="navbar-sections">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0"
+                    id="navbar-sections">
                     <li class="nav-item">
                         <a class="nav-link<%=home%>" aria-current="page"
                             href="/">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link<%=categories%>" aria-current="page"
-                            href="/categories">Categories</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#"
+                            id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu"
+                            aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Fantasy</a></li>
+                            <li><a class="dropdown-item" href="#">Horror</a></li>
+                            <li><a class="dropdown-item" href="#">Thriller</a></li>
+                            <li><a class="dropdown-item" href="#">Adventure</a></li>
+                            <li><hr class="dropdown-divider bg-white"></li>
+                            <li><a class="dropdown-item" href="#">Something else
+                                    here</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link<%=popular%>" aria-current="page"
@@ -41,8 +57,11 @@
     </nav>
 
     <div class="container-md">
-        <div id="page-title" class="my-5 pb-3 text-center text-white border-bottom border-1 border-secondary">
-            <h1><%= sectionTitle %></h1>
+        <div id="page-title"
+            class="my-5 pb-3 text-center text-white border-bottom border-1 border-secondary">
+            <h1>
+                <%= sectionTitle %>
+            </h1>
         </div>
     </div>
 </header>

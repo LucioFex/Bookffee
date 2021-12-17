@@ -86,6 +86,19 @@ nav {
     color: #ffcb5c;
 }
 
+.navbar .dropdown-menu {
+    background: #182f3a;
+}
+
+.navbar .dropdown-item {
+    color: #f0f0f0 !important;
+    width: 95%;
+}
+
+.navbar .dropdown-item:hover {
+    background-color: #152b35;
+}
+
 #search {
     padding: 0.75rem;
 }
