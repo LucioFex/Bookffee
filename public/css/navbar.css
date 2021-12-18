@@ -100,7 +100,6 @@ nav {
     width: 98%;
 }
 
-
 #navbar-dropdown .dropdown-item:hover {
     background-color: #152b35;
 }
@@ -150,5 +149,15 @@ nav {
 
     .navbar-expand-lg .navbar-nav .nav-link {
         padding: 1.8rem 1.2rem;
+    }
+
+    #navbar-dropdown .dropdown-item {
+        width: 100%;
+    }
+}
+
+@media(max-width: 545px) {
+    #navbar-dropdown li div:last-child {
+        display: none
     }
 }
