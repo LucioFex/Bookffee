@@ -2,13 +2,11 @@
 
 // Frameworks and Environment Variables Tool
 const express = require("express");
+const path = require("path");
 const app = express();
 
 require("dotenv").config();
 app.set("port", process.env.PORT || 3000);
-
-// Google Books API
-
 
 // Body-Parser (integrated in Express)
 app.use(express.urlencoded({extended: true}));
@@ -16,12 +14,12 @@ app.use(express.json());
 
 // Templates Engine:
 app.set("view engine", "ejs");
-app.set("views", __dirname + "/views");
+app.set("views", path.join(__dirname, "views"));
 
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 // Web routes
-app.use("/", require("./routes/index"));
+app.use("/", require(path.join(__dirname, "routes", "index")));
 // app.use("/book", require("./router/book"));  Implement later...
 
 

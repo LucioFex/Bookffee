@@ -1,8 +1,11 @@
 const express = require("express");
+const path = require("path");
 const router = express.Router();
 
+// Google Books API Helper
+const booksApi = require(path.join(__dirname, "..", "helpers", "booksApi"));
 
-// Rendering of the main pages (home, categories, popular and recent)
+// Routes of the main pages
 const routes = {  // Separated by -> route: [filename, ejs-render]
     "/": ["home", "Home"],
     "/categories": ["categories", "Categories"],
@@ -10,9 +13,12 @@ const routes = {  // Separated by -> route: [filename, ejs-render]
     "/recent": ["most-recent", "Most Recent"]
 }
 
+// Rendering of the main pages (home, categories, popular and recent)
 for (let route in routes) {
     router.get(route, (req, res) => {
-        res.render(routes[route][0], {sectionTitle: routes[route][1]});
+        res.render(
+            routes[route][0],
+            {sectionTitle: routes[route][1], booksApi: booksApi});
     });
 };
 

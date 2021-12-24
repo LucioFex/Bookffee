@@ -9,12 +9,12 @@ const setUp = () => {
 };
 
 const copyEmailToClipboard = () => {
-    /* Add docs later... */
+    /* Function to copy the website's author Email to the clipboard */
 
     copiedEmailMessage.style.opacity = "100%";
     contactButton.removeEventListener("click", copyEmailToClipboard, false);
 
-    setTimeout(() => {
+    setTimeout(() => {  // Time to copy the Email again
         copiedEmailMessage.style.opacity = "0%";
         contactButton.addEventListener("click", copyEmailToClipboard, false);
     }, 3500);

@@ -17,8 +17,7 @@
     "search",
     "genre",
     "prices",
-    "book",
-    "cover"
+    "book"
   ],
   "author": "Luciano Esteban",
   "license": "MIT",

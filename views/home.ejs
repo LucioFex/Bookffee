@@ -1,11 +1,5 @@
-<%- include(
-    'templates/head', {
-        home: " active",
-        categories: "",
-        popular: "",
-        recent: "",
-        pageStyle: "css/home.css"
-        }) %>
+<%- include( 'templates/head' , { home: " active" , categories: "" ,
+    popular: "", recent: "" , pageStyle: "css/home.css"}) %>
 
     <div class="container-md">
         <section id="main-section">
@@ -15,7 +9,7 @@
                         <div class="col-md-auto my-3">
                             <div>
                                 <img src="https://www.angeldelsoto.es/wp-content/uploads/leather-book-preview.png" alt="Sample Book">
-                                <p>237 Chars Description</p>
+                                <p><%=booksApi.dummyFunct()%></p>
                             </div>
                             <p class="mt-2">Title</p>
                         </div>
