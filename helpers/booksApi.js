@@ -1,15 +1,40 @@
-const getBooksData = async () => {
-    /* Is a request-function to get the json data from the Google Books API.
-    It brings a limit of 12 books, meant to be used in the HTML files.*/
-    let request = "https://www.googleapis.com/books/v1/volumes?q=the+lord+of+the+rings";
-    let response = await fetch(request);
-    let json = await response.json();
-    return json
-};
+"use strict"
+const https = require("https");
 
-const dummyFunct = () => {  // Delete later...
-    return "237 Chars Description";
+let options = {
+    host: 'www.googleapis.com',
+    path: `www.googleapis.com/books/v1/volumes?q=harry+potter:keyes&key=${process.env.apiKey}`,
+    headers: {'User-Agent': 'request'}
+}
+
+const getBooksData = () => {
+    https.get(options, (res) => {
+        let json = "";
+
+        // Received chunk of data
+        res.on('data', (chunk) => {json += chunk});
+
+        // The whole response has been received
+        res.on('end', () => {
+            if (res.statusCode === 200) {
+                try {
+                    let data = JSON.parse(json);
+                    // Is data available here?:
+                    console.log(data.html_url);
+                }
+                catch (err) {
+                    console.log("There was an error parsing the JSON!");
+                }
+            }
+
+            else if (res.statusCode !== 200) {
+                console.log('Current statusCode is:', res.statusCode);
+            }
+        });
+    }).on("error", (err) => {
+        console.log("There's an Error:", err);
+    });
 }
 
 
-module.exports = {getBooksData, dummyFunct};
+module.exports = {getBooksData};
