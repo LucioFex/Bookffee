@@ -4,6 +4,8 @@
     <div class="container-md">
         <section id="main-section">
             <% var books = booksApi.getBooksData() %>
+            <% books.then(json => console.log(json)).catch(error => console.log(`Error -> ${error}`)); %>
+
             <% for (let div=0; div < 3; div++) { %>
                 <div class="row text-center justify-content-evenly">
                     <% for (let div=0; div < 4; div++) { %>
