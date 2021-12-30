@@ -3,18 +3,36 @@
 
     <div class="container-md">
         <section id="main-section">
-            <% var books = booksApi.getBooksData() %>
-            <% books.then(json => console.log(json)).catch(error => console.log(`Error -> ${error}`)); %>
-
-            <% for (let div=0; div < 3; div++) { %>
+            <% let index = 0 %>  <%# Variable to select the API books %>
+            <% for (let col=0; col < 3; col++) { %>
                 <div class="row text-center justify-content-evenly">
-                    <% for (let div=0; div < 4; div++) { %>
+                    <% for (let row=0; row < 4; row++) { %>
                         <div class="col-md-auto my-3">
+                            <% index += 1 %>
                             <div>
-                                <img src="https://www.angeldelsoto.es/wp-content/uploads/leather-book-preview.png" alt="Sample Book">
-                                <p><%="Description"%></p>
+                                <% try { %>
+                                    <% books[index].volumeInfo.imageLinks.thumbnail %> <%# Checks if there's an image %>
+                                    <img src="<%= books[index].volumeInfo.imageLinks.thumbnail %>" alt="Sample Book" class="book-images">
+
+                                <% } catch { %>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Book.svg/1200px-Book.svg.png" alt="Sample Book" class="book-images">
+                                <% } %>
+
+                                <% try { %>
+                                    <% books[index].volumeInfo.description %> <%# Checks if there's a description %>
+                                    <p><%= books[index].volumeInfo.description.slice(0, 237) + "..." %></p>  <%# Update later %>
+    
+                                <% } catch { %>
+                                    <p>Description</p>
+                                <% } %>
                             </div>
-                            <p class="mt-2">Title</p>
+                            <% try { %>
+                                <% books[index].volumeInfo.title %> <%# Checks if there's a title %>
+                                <p class="mt-2"><%= books[index].volumeInfo.title %></p>
+
+                            <% } catch { %>
+                                <p class="mt-2">Title</p>
+                            <% } %>
                         </div>
                         <% } %>
                 </div>
