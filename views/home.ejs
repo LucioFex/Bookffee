@@ -10,29 +10,10 @@
                         <div class="col-md-auto my-3">
                             <% index += 1 %>
                             <div>
-                                <% try { %>
-                                    <% books[index].volumeInfo.imageLinks.thumbnail %> <%# Checks if there's an image %>
-                                    <img src="<%= books[index].volumeInfo.imageLinks.thumbnail %>" alt="Sample Book" class="book-images">
-
-                                <% } catch { %>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Book.svg/1200px-Book.svg.png" alt="Sample Book" class="book-images">
-                                <% } %>
-
-                                <% try { %>
-                                    <% books[index].volumeInfo.description %> <%# Checks if there's a description %>
-                                    <p><%= books[index].volumeInfo.description.slice(0, 237) + "..." %></p>  <%# Update later %>
-    
-                                <% } catch { %>
-                                    <p>Description</p>
-                                <% } %>
+                                <img src="<%= books[index].imageLinks.thumbnail %>" alt="Sample Book" class="book-images">
+                                <p><%= books[index].description.slice(0, 237) + "..." %></p>
                             </div>
-                            <% try { %>
-                                <% books[index].volumeInfo.title %> <%# Checks if there's a title %>
-                                <p class="mt-2"><%= books[index].volumeInfo.title %></p>
-
-                            <% } catch { %>
-                                <p class="mt-2">Title</p>
-                            <% } %>
+                            <p class="mt-2"><%= books[index].title %></p>
                         </div>
                         <% } %>
                 </div>
