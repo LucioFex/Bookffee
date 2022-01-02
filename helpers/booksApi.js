@@ -2,18 +2,20 @@
 const fetch = require("node-fetch");
 
 
-const getBooksData = async () => {  // Requires of a performance improvement later...
+const getBooksData = async () => {  // Requires of a promise performance improvement later...
     /* Function to get 12 books data from the Google Books API */
     let books = []
     const topics = orderTopics()
     const booksApi = {
         "api": "https://www.googleapis.com/books/v1/volumes?q=",
-        "config": "&maxResults=5&orderBy=relevance&:keyes&key="
+        "config": "&maxResults=5&orderBy=relevance&startIndex=",
+        "apiKey": "&keyes&key=" + process.env.apiKey
     }
 
-    var url, response, json
+    var url, response, json, index
     for (let topic of topics) {
-        url = booksApi.api + topic + booksApi.config + process.env.apiKey;
+        index = Math.floor(Math.random() * 5)  // Index from 0 to 5
+        url = booksApi.api + topic + booksApi.config + index + booksApi.apiKey;
         response = await fetch(url);
         json = await response.json();
 
@@ -42,6 +44,7 @@ const orderTopics = () => {
         "Metro+2033"
     ];
 
+    // If the topic is not used already, it's going to be used
     for (let index = 0; ordenedTopics.length <= 12; index++) {
         randomTopic = topics[Math.floor(Math.random() * topics.length)];
         if (!ordenedTopics.includes(randomTopic)) {
@@ -49,7 +52,6 @@ const orderTopics = () => {
         }
     }
 
-    console.log(ordenedTopics)
     return ordenedTopics;
 }
 
