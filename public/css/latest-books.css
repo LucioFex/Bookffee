@@ -2,6 +2,15 @@
     color: #f0f0f0;
 }
 
+.latest-books h3 {
+    font-size: 1.45rem;
+    font-weight: 550;
+}
+
+.latest-books h3 i {
+    font-size: 1.75rem;
+}
+
 .latest-books:first-child h3 i {
     color: #ffcb5c;
 }

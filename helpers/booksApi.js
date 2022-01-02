@@ -16,10 +16,6 @@ const getBooksData = async (topic) => {
         return manageData(json);
     }
     throw Error("There was a problem getting the books");
-    
-
-    return books;
-    // return json.items.slice(0, 12);
 }
 
 const manageData = (json) => {

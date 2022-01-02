@@ -16,7 +16,7 @@ const routes = {  // Separated by -> route: [filename, ejs-render]
 // Rendering of the main pages (home, categories, popular and recent)
 for (let route in routes) {
     router.get(route, async (req, res) => {
-        let books = await booksApi.getBooksData("harry+potter");  // Change later...
+        let books = await booksApi.getBooksData("Sherlock+Holmes");  // Change later...
         res.render(routes[route][0], {sectionTitle: routes[route][1], books});
     });
 };
