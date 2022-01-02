@@ -9,11 +9,13 @@
                     <% for (let row=0; row < 4; row++) { %>
                         <div class="col-md-auto my-3">
                             <% index += 1 %>
-                            <div>
-                                <img src="<%= books[index].imageLinks.thumbnail %>" alt="Sample Book" class="book-images">
-                                <p><%= books[index].description.slice(0, 237) + "..." %></p>
-                            </div>
-                            <p class="mt-2"><%= books[index].title %></p>
+                            <% try { %>
+                                <div>
+                                    <img src="<%= books[index].imageLinks.thumbnail %>" alt="Sample Book" class="book-images">
+                                    <p><%= books[index].description.slice(0, 237) + "..." %></p>
+                                </div>
+                                <p class="mt-2"><%= books[index].title %></p>
+                            <% } catch {} %>
                         </div>
                         <% } %>
                 </div>
