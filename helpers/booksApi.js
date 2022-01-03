@@ -34,14 +34,17 @@ const orderTopics = () => {
     let ordenedTopics = [];
     let randomTopic;
     let topics = [
+        "fifty+shades+of+grey", "clean+code", "jd+barker", "the+bronzed+beasts",
+        "stephen+king+pet+cementary", "joe+hill+fire", "hugh+howey", "werewolf",
         "the+idiot+fyodor", "the+little+prince", "frankestein", "van+hellsing",
         "the+lord+of+The+Rings", "the+black+Cat", "the+mistery+of+salem's+lot",
         "sherlock+holmes", "lovecraft", "think+of+a+number", "harry+potter",
+        "pretty+girls+karin+slaughter", "joe+hill+strange+water", "cosmos",
         "ana+frank", "rich+dad+poor+dad", "cracking+the+coding+interview",
         "rosemary's+baby", "let+the+right+one+in", "asylum", "robin+cook",
         "metamorphosis+kafka", "the+hell+house", "dracula+bram+stoker",
-        "fifty+shades+of+grey", "cosmos", "clean+code", "jd+barker",
-        "Metro+2033"
+        "Metro+2033", "the+haunting+of+hill+house", "the+diviners",
+        "shadow+of+the+fox", "words+of+radiance", "the+poppy+war"
     ];
 
     // If the topic is not used already, it's going to be used
