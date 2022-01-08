@@ -57,6 +57,7 @@ const getBooksData = async () => {
         apiKey: `&keyes&key=${process.env.apiKey}`,
     };
 
+    // Get the book URLs Fetch (promises) and Fetch of the books data
     let url; let startIndex; let topic;
     for (let index = 0; index < topics.length; index += 1) {
         topic = topics[index];
@@ -66,19 +67,21 @@ const getBooksData = async () => {
         booksData.push(fetch(url));
     }
 
-    booksData = await Promise.all(booksData); // Update of the books promises
-
+    // Books data conversion to JSON
+    booksData = await Promise.all(booksData);
     for (let index = 0; index < booksData.length; index += 1) {
         booksData[index] = booksData[index].json();
     }
 
-    booksData = await Promise.all(booksData); // Update of the books promises
+    // Data conversion to JSON
+    booksData = await Promise.all(booksData);
 
+    // Books filter (by photo, name and description), getting only one per topic
     for (let index = 0; index < topics.length; index += 1) {
         books.push(manageData(booksData[index]));
     }
 
-    return books
+    return books;
 };
 
 module.exports = { getBooksData };
