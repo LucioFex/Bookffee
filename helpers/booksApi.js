@@ -46,8 +46,9 @@ const manageData = (json) => {
     return correctBook;
 };
 
-const getBooksData = async () => { // Requires ofpromise later...
+const getBooksData = async () => {
     /* Function to get 12 books data from the Google Books API */
+    let booksData = [];
     const books = [];
     const topics = orderTopics();
     const apiUrl = { // Google Books Api URL
@@ -56,23 +57,28 @@ const getBooksData = async () => { // Requires ofpromise later...
         apiKey: `&keyes&key=${process.env.apiKey}`,
     };
 
-    let url; let response; let json; let startIndex; let topic;
+    let url; let startIndex; let topic;
     for (let index = 0; index < topics.length; index += 1) {
         topic = topics[index];
         startIndex = Math.floor(Math.random() * 5); // Index from 0 to 5
         url = apiUrl.api + topic + apiUrl.config + startIndex + apiUrl.apiKey;
 
-        response = await fetch(url); // Remove await from loop later...
-        json = await response.json(); // Remove await from loop later...
-
-        if (response.status !== 200) {
-            throw Error('There was a problem getting the books');
-        }
-
-        books.push(manageData(json));
+        booksData.push(fetch(url));
     }
 
-    return books;
+    booksData = await Promise.all(booksData); // Update of the books promises
+
+    for (let index = 0; index < booksData.length; index += 1) {
+        booksData[index] = booksData[index].json();
+    }
+
+    booksData = await Promise.all(booksData); // Update of the books promises
+
+    for (let index = 0; index < topics.length; index += 1) {
+        books.push(manageData(booksData[index]));
+    }
+
+    return books
 };
 
 module.exports = { getBooksData };
