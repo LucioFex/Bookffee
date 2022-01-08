@@ -54,7 +54,6 @@ const getBooksData = async () => {
     const apiUrl = { // Google Books Api URL
         api: 'https://www.googleapis.com/books/v1/volumes?q=',
         config: '&maxResults=5&orderBy=relevance&startIndex=',
-        apiKey: `&keyes&key=${process.env.apiKey}`,
     };
 
     // Get the book URLs Fetch (promises) and Fetch of the books data
@@ -62,7 +61,7 @@ const getBooksData = async () => {
     for (let index = 0; index < topics.length; index += 1) {
         topic = topics[index];
         startIndex = Math.floor(Math.random() * 5); // Index from 0 to 5
-        url = apiUrl.api + topic + apiUrl.config + startIndex + apiUrl.apiKey;
+        url = apiUrl.api + topic + apiUrl.config + startIndex;
 
         booksData.push(fetch(url));
     }
