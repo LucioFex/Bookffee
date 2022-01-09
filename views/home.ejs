@@ -6,7 +6,7 @@
             <% let index = 0 %> <%# Variable to select the API books %>
             <% let limitReached = false %> <%# Warn if the books have reached their limit %>
             <% for (let col=0; col < 3; col++) { %>
-                <div class="row text-center justify-content-center">
+                <div class="row text-center justify-content-start">
                     <% for (let row=0; row < 4; row++) { %>
                         <div class="col-md-auto my-3 mx-3">
                             <% index += 1 %>
@@ -21,7 +21,6 @@
                                 <p><%= books[index].description.slice(0, 237) + "..." %></p>
                             </div>
                             <p class="mt-2"><%= books[index].title %></p>
-
                         </div>
                     <% } %>
                     <% if (limitReached) break %>
