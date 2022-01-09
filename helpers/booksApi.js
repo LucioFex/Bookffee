@@ -12,8 +12,8 @@ const orderTopics = () => {
         'the+idiot+fyodor', 'the+little+prince', 'frankestein', 'van+hellsing',
         'sherlock+holmes', 'lovecraft', 'think+of+a+number', 'harry+potter',
         'pretty+girls+karin+slaughter', 'joe+hill+strange+water', 'cosmos',
-        'ana+frank', 'rich+dad+poor+dad', 'cracking+the+coding+interview',
         'rosemary\'s+baby', 'let+the+right+one+in', 'asylum', 'robin+cook',
+        'ana+frank', 'rich+dad+poor+dad', 'cracking+the+coding+interview',
         'metamorphosis+kafka', 'the+hell+house', 'dracula+bram+stoker',
         'Metro+2033', 'the+haunting+of+hill+house', 'the+diviners',
         'shadow+of+the+fox', 'words+of+radiance', 'the+poppy+war',
@@ -54,6 +54,7 @@ const getBooksData = async () => {
     const apiUrl = { // Google Books Api URL
         api: 'https://www.googleapis.com/books/v1/volumes?q=',
         config: '&maxResults=5&orderBy=relevance&startIndex=',
+        apiKey: `&keyes&key=${process.env.apiKey}`,
     };
 
     // Get the book URLs Fetch (promises) and Fetch of the books data
@@ -61,7 +62,7 @@ const getBooksData = async () => {
     for (let index = 0; index < topics.length; index += 1) {
         topic = topics[index];
         startIndex = Math.floor(Math.random() * 5); // Index from 0 to 5
-        url = apiUrl.api + topic + apiUrl.config + startIndex;
+        url = apiUrl.api + topic + apiUrl.config + startIndex + apiUrl.apiKey;
 
         booksData.push(fetch(url));
     }
@@ -76,7 +77,7 @@ const getBooksData = async () => {
     booksData = await Promise.all(booksData);
 
     // Books filter (by photo, name and description), getting only one per topic
-    for (let index = 0; index < topics.length; index += 1) {
+    for (let index = 0; index < topics.length - 1; index += 1) {
         books.push(manageData(booksData[index]));
     }
 

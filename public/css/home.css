@@ -63,7 +63,7 @@
 }
 
 @media(max-width: 767px) {
-    #main-section .description {
+    #main-section .title {
         width: 100%;
     }
 
