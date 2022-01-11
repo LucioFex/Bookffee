@@ -46,7 +46,7 @@ const manageData = (json) => {
     return correctBook;
 };
 
-const getBooksData = async () => {
+const getHomeBooks = async () => {
     /* Function to get 12 books data from the Google Books API */
     let booksData = [];
     const books = [];
@@ -67,13 +67,13 @@ const getBooksData = async () => {
         booksData.push(fetch(url));
     }
 
-    // Books data conversion to JSON
+    // Books data conversion to Promise
     booksData = await Promise.all(booksData);
+
+    // Data conversion to JSON
     for (let index = 0; index < booksData.length; index += 1) {
         booksData[index] = booksData[index].json();
     }
-
-    // Data conversion to JSON
     booksData = await Promise.all(booksData);
 
     // Books filter (by photo, name and description), getting only one per topic
@@ -84,4 +84,50 @@ const getBooksData = async () => {
     return books;
 };
 
-module.exports = { getBooksData };
+const getRecommendedBooks = async () => {
+    /* Function to get 6 recent books divided by 3 sections */
+    /* Every section will be focused on one genre */
+    let booksData = [];
+    const usedGenres = [];
+    const books = [[], [], []];
+    const apiUrl = { // Google Books Api URL for searches by genre
+        api: 'https://www.googleapis.com/books/v1/volumes?q=subject:',
+        config: `&maxResults=5&orderBy=newest&keyes&key=${process.env.apiKey}`,
+    };
+    const genres = [ // Book genres
+        'action', 'adventure', 'thriller', 'horror', 'terror', 'fantasy',
+        'romance', 'drama', 'crime', 'science+fiction', 'programming',
+        'fitness', 'history', 'business',
+    ];
+
+    // Recollection of books data (with three different genres)
+    let genre; let url;
+    while (booksData.length < 3) { // Fetch of three book genres
+        genre = genres[Math.floor(Math.random() * genres.length)];
+        if (usedGenres.includes(genre)) continue; // Not repeat a used genre
+
+        usedGenres.push(genre);
+        url = apiUrl.api + genre + apiUrl.config;
+        booksData.push(fetch(url)); // Add of books from one genre
+    }
+
+    // Books data conversion to Promise
+    booksData = await Promise.all(booksData);
+
+    // Books data conversion to JSON
+    for (let index = 0; index < booksData.length; index += 1) {
+        booksData[index] = booksData[index].json();
+    }
+    booksData = await Promise.all(booksData);
+
+    // Books filter (by photo, name and description), getting only one per genre
+    for (let col = 0; col < books.length; col += 1) {
+        for (let row = 0; row < 2; row += 1) {
+            books[col].push(manageData(booksData[row]));
+        }
+    }
+
+    return books;
+};
+
+module.exports = { getHomeBooks, getRecommendedBooks };

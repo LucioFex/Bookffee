@@ -17,7 +17,7 @@ const routes = { // Separated by -> route: [filename, ejs-render]
 for (let index = 0; index < Object.keys(routes).length; index += 1) {
     const route = Object.keys(routes)[index];
     router.get(route, async (req, res) => {
-        const books = await booksApi.getBooksData();
+        const books = await booksApi.getHomeBooks();
         res.render(routes[route][0], { sectionTitle: routes[route][1], books });
     });
 }

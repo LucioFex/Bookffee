@@ -44,24 +44,6 @@
     font-weight: 250;
 }
 
-#pagination a {
-    background: #252d2f;
-    border-color: #1f292c;
-    text-decoration: none;
-    font-weight: bold;
-    color: #f0f0f0;
-}
-
-#pagination a:first-child, #pagination a:last-child {
-    width: 150px;
-}
-
-#pagination a:hover {
-    background: #f0bc4d;
-    border-color: #ecb949;
-    color: #0f0f0f;
-}
-
 @media(max-width: 767px) {
     #main-section .title {
         width: 100%;
