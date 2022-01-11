@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 const orderTopics = () => {
-    /* Function to select and order 12 defult books for the 'Home' route */
+    /* Function to select and order 12 default books for the 'Home' route */
 
     let randomTopic;
     const ordenedTopics = [];
