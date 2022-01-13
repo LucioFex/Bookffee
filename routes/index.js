@@ -6,25 +6,27 @@ const router = express.Router();
 const booksApi = require('../helpers/booksApi');
 
 // Routes of the main pages
-const routes = { // Separated by -> route: [filename, ejs-render]
-    '/': ['home', 'Home'],
-    '/categories': ['categories', 'Categories'],
-    '/popular': ['most-popular', 'Most Popular'],
-    '/recent': ['most-recent', 'Most Recent'],
-};
-
-// Rendering of the main pages (home, categories, popular and recent)
-for (let index = 0; index < Object.keys(routes).length; index += 1) { // Individualize later...
-    const route = Object.keys(routes)[index];
-    router.get(route, async (req, res) => {
-        const homeBooks = await booksApi.getHomeBooks();
-        const recommendedBooks = await booksApi.getRecommendedBooks();
-        res.render(
-            routes[route][0], {
-                sectionTitle: routes[route][1], homeBooks, recommendedBooks,
-            });
+router.get('/', async (req, res) => {
+    const homeBooks = await booksApi.getHomeBooks();
+    const recommendedBooks = await booksApi.getRecommendedBooks();
+    res.render('home', {
+        sectionTitle: 'Home', homeBooks, recommendedBooks,
     });
-}
+});
+
+router.get('/popular', async (req, res) => {
+    const recommendedBooks = await booksApi.getRecommendedBooks();
+    res.render('most-popular', {
+        sectionTitle: 'Most Popular', recommendedBooks,
+    });
+});
+
+router.get('/recent', async (req, res) => {
+    const recommendedBooks = await booksApi.getRecommendedBooks();
+    res.render('most-recent', {
+        sectionTitle: 'Most Recent', recommendedBooks,
+    });
+});
 
 // 404 http status response
 router.use((req, res) => {
