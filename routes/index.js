@@ -14,11 +14,15 @@ const routes = { // Separated by -> route: [filename, ejs-render]
 };
 
 // Rendering of the main pages (home, categories, popular and recent)
-for (let index = 0; index < Object.keys(routes).length; index += 1) {
+for (let index = 0; index < Object.keys(routes).length; index += 1) { // Individualize later...
     const route = Object.keys(routes)[index];
     router.get(route, async (req, res) => {
-        const books = await booksApi.getHomeBooks();
-        res.render(routes[route][0], { sectionTitle: routes[route][1], books });
+        const homeBooks = await booksApi.getHomeBooks();
+        const recommendedBooks = await booksApi.getRecommendedBooks();
+        res.render(
+            routes[route][0], {
+                sectionTitle: routes[route][1], homeBooks, recommendedBooks,
+            });
     });
 }
 

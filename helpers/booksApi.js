@@ -100,7 +100,7 @@ const getRecommendedBooks = async () => {
         'fitness', 'history', 'business',
     ];
 
-    // Recollection of books data (with three different genres)
+    // Books data collection (with three different genres)
     let genre; let url;
     while (booksData.length < 3) { // Fetch of three book genres
         genre = genres[Math.floor(Math.random() * genres.length)];
