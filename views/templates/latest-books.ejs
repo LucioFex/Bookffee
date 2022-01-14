@@ -1,82 +1,35 @@
 <section class="container-md mb-5 mt-3">
     <div class="row justify-content-around">
-        <div class="col-md latest-books">
-            <h3 class="my-3"><i class="fas fa-book"></i>&nbspLatest of Adventure</h3>
-            <div>
-                <div class="d-flex mb-3">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/91wOUFZCE+L.jpg" alt="Sample Book">
-                    <div class="mb-3">
-                        <h4 class="ms-3 mb-1">Dracula</h4>
-                        <p class="ms-3">
-                            Jonathan Harker, a newly qualified English solicitor, visits Count Dracula at his castle in the Carpathian Mountains to help the Count purchase a house near London. Ignoring the Count's warning, Harker wanders the...
-                        </p>
+        <% for (let col = 0; col < latestBooks.length; col += 1) { %>
+            <div class="col-md latest-books">
+                <h3 class="my-3"><i class="fas fa-book"></i>&nbspLatest of <%= latestBooks[col][0] %></h3>
+                <div>
+                    <% try { %>
+                        <% latestBooks[col][1].imageLinks.thumbnail %>
+                    <% } catch { continue }; %>
+
+                    <div class="d-flex mb-3">
+                        <img src="<%= latestBooks[col][1].imageLinks.thumbnail%>" alt="Sample Book">
+                        <div class="mb-3">
+                            <h4 class="ms-3 mb-1"><%= latestBooks[col][1].title %></h4>
+                            <p class="ms-3"><%= latestBooks[col][1].description.slice(0, 220) + "..." %></p>
+                        </div>
                     </div>
                 </div>
-                <div class="d-flex mb-4">
-                    <img src="https://imagessl1.casadellibro.com/a/l/t5/21/9788497931021.jpg" alt="Sample Book">
-                    <div class="mb-3">
-                        <h4 class="ms-3 mb-1">The Mistery of Salem's Lot</h4>
-                        <p class="ms-3">
-                            Ben Mears, a writer who spent part of his childhood in Jerusalem's Lot, Maine, has returned after 25 years to try to write his next novel. He quickly becomes friends with high school teacher Matt Burke and strikes...
-                        </p>
+                <div>
+                    <% try { %>
+                        <% latestBooks[col][2].imageLinks.thumbnail %>
+                    <% } catch { continue }; %>
+
+                    <div class="d-flex mb-3">
+                        <img src="<%= latestBooks[col][2].imageLinks.thumbnail %>" alt="Sample Book">
+                        <div class="mb-3">
+                            <h4 class="ms-3 mb-1"><%= latestBooks[col][2].title %></h4>
+                            <p class="ms-3"><%= latestBooks[col][2].description.slice(0, 237) + "..." %></p>
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex text-center mb-3">
-                    <a class="btn btn-warning" href="/categories">More Adventure Books</a>
                 </div>
             </div>
-        </div>
-        <div class="col-md latest-books">
-            <h3 class="my-3"><i class="fas fa-book"></i>&nbspLatest of Thriller</h3>
-            <div>
-                <div class="d-flex mb-3">
-                    <img src="https://prodimage.images-bn.com/pimages/9780312868857_p0_v2_s550x406.jpg" alt="Sample Book">
-                    <div class="mb-3">
-                        <h4 class="ms-3 mb-1">Hell House</h4>
-                        <p class="ms-3">
-                            The story of Hell House concerns four people – Dr. Lionel Barrett, a physicist with an interest in parapsychology, his wife Edith, and two mediums (Florence Tanner, a spiritualist and mental medium, and Benjamin...
-                        </p>
-                    </div>
-                </div>
-                <div class="d-flex mb-4">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/51EstVXM1UL._SX331_BO1,204,203,200_.jpg" alt="Sample Book">
-                    <div class="mb-3">
-                        <h4 class="ms-3 mb-1">The Lord of the Rings</h4>
-                        <p class="ms-3">
-                            The prologue explains that the work is "largely concerned with hobbits", telling of their origins in a migration from the east, their habits such as smoking "pipe-weed", and of how their homeland the Shire is organised...
-                        </p>
-                    </div>
-                </div>
-                <div class="d-flex text-center mb-3">
-                    <a class="btn btn-warning" href="/categories">More Thriller Books</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md latest-books">
-            <h3 class="my-3"><i class="fas fa-book"></i>&nbspLatest of Action</h3>
-            <div>
-                <div class="d-flex mb-3">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/91Ru6WJz2XL.jpg" alt="Sample Book">
-                    <div class="mb-3">
-                        <h4 class="ms-3 mb-1">Harry Potter and the Philosopher's Stone</h4>
-                        <p class="ms-3">
-                            Harry Potter lives with his abusive aunt and uncle, Vernon and Petunia Dursley and their bullying son, Dudley. On Harry's eleventh birthday, a half-giant named Rubeus Hagrid personally delivers an acceptance letter...
-                        </p>
-                    </div>
-                </div>
-                <div class="d-flex mb-4">
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_675025-MLA42712398243_072020-O.jpg" alt="Sample Book">
-                    <div class="mb-3">
-                        <h4 class="ms-3 mb-1">Think of a Number</h4>
-                        <p class="ms-3">
-                            Arriving in the mail over a period of weeks are taunting letters that end with a simple declaration, “Think of any number…picture it…now see how well I know your secrets.” Amazingly, those who comply find that the...
-                        </p>
-                    </div>
-                </div>
-                <div class="d-flex text-center mb-3">
-                    <a class="btn btn-warning" href="/categories">More Action Books</a>
-                </div>
-            </div>
-        </div>
+        <% } %>
     </div>
 </section>

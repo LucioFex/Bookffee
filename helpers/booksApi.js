@@ -2,7 +2,6 @@ const fetch = require('node-fetch');
 
 const orderTopics = () => {
     /* Function to select and order 12 default books for the 'Home' route */
-
     let randomTopic;
     const ordenedTopics = [];
     const topics = [
@@ -26,15 +25,17 @@ const orderTopics = () => {
             ordenedTopics.push(randomTopic);
         }
     }
+
     return ordenedTopics;
 };
 
-const manageData = (json) => {
+const manageData = (json, startIndex = 0) => {
     /* Function to manage the data from the Google Books API call */
+    /* You can select from which index to search first (startIndex) */
     let correctBook;
 
     for (let index = 0; index < json.items.length; index += 1) {
-        const book = json.items[index];
+        const book = json.items[index + startIndex] ?? json.items[index];
         if ( // Checks for book (with photo and description)
             book.volumeInfo !== undefined
             && book.volumeInfo.description !== undefined
@@ -95,9 +96,12 @@ const getRecommendedBooks = async () => {
         config: `&maxResults=5&orderBy=newest&keyes&key=${process.env.apiKey}`,
     };
     const genres = [ // Book genres
-        'action', 'adventure', 'thriller', 'horror', 'terror', 'fantasy',
-        'romance', 'drama', 'crime', 'science+fiction', 'programming',
-        'fitness', 'history', 'business',
+        'Action', 'Action', 'Action', 'Adventure', 'Adventure', 'Adventure',
+        'Adventure', 'Thriller', 'Thriller', 'Thriller', 'Thriller', 'Horror',
+        'Horror', 'Horror', 'Horror', 'Terror', 'Terror', 'Terror', 'Fantasy',
+        'Fantasy', 'Fantasy', 'Fantasy', 'Romance', 'Drama', 'Drama', 'Crime',
+        'Crime', 'Crime', 'Science Fiction', 'Science Fiction', 'Programming',
+        'Fitness', 'History', 'Business',
     ];
 
     // Books data collection (with three different genres)
@@ -105,8 +109,9 @@ const getRecommendedBooks = async () => {
     while (booksData.length < 3) { // Fetch of three book genres
         genre = genres[Math.floor(Math.random() * genres.length)];
         if (usedGenres.includes(genre)) continue; // Not repeat a used genre
-
         usedGenres.push(genre);
+
+        genre = genre.replace(' ', '+').toLowerCase();
         url = apiUrl.api + genre + apiUrl.config;
         booksData.push(fetch(url)); // Add of books from one genre
     }
@@ -120,11 +125,11 @@ const getRecommendedBooks = async () => {
     }
     booksData = await Promise.all(booksData);
 
-    // Books filter (by photo, name and description), getting only one per genre
-    for (let col = 0; col < books.length; col += 1) {
-        for (let row = 0; row < 2; row += 1) {
-            books[col].push(manageData(booksData[row]));
-        }
+    // Books filter (by photo, name and description), saving only two per genre
+    for (let index = 0; index < books.length; index += 1) {
+        books[index].push(usedGenres[index]);
+        books[index].push(manageData(booksData[index], 0));
+        books[index].push(manageData(booksData[index], 1));
     }
 
     return books;
