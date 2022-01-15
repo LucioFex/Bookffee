@@ -8,14 +8,17 @@ const orderTopics = () => {
         'fifty+shades+of+grey', 'clean+code', 'jd+barker', 'the+bronzed+beasts',
         'stephen+king+pet+cementary', 'joe+hill+fire', 'hugh+howey', 'werewolf',
         'the+lord+of+The+Rings', 'the+black+Cat', 'the+mistery+of+salem\'s+lot',
-        'the+idiot+fyodor', 'the+little+prince', 'frankestein', 'van+hellsing',
-        'sherlock+holmes', 'lovecraft', 'think+of+a+number', 'harry+potter',
-        'pretty+girls+karin+slaughter', 'joe+hill+strange+water', 'cosmos',
-        'rosemary\'s+baby', 'let+the+right+one+in', 'asylum', 'robin+cook',
-        'ana+frank', 'rich+dad+poor+dad', 'cracking+the+coding+interview',
-        'metamorphosis+kafka', 'the+hell+house', 'dracula+bram+stoker',
-        'Metro+2033', 'the+haunting+of+hill+house', 'the+diviners',
-        'shadow+of+the+fox', 'words+of+radiance', 'the+poppy+war',
+        'Metro+2033', 'the+haunting+of+hill+house', 'the+diviners', 'neon+gods',
+        'mexican+gothic', 'the+hell+house', 'dracula+bram+stoker', 'steve+jobs',
+        'asylum', 'robin+cook', 'bird+box', 'van+hellsing', 'shadow+of+the+fox',
+        'the+witcher', 'game+of+thrones', 'the+windup+girl', 'leviathan+wakes',
+        'metamorphosis+kafka', 'all+her+little+secrets', 'not+a+happy+family',
+        'think+of+a+number', 'harry+potter', 'pretty+girls+karin+slaughter',
+        'the+poppy+war', 'outlander', 'the+fifth+season', 'fahrenheit+451',
+        'bird+box', 'sherlock+holmes', 'lovecraft', 'let+the+right+one+in',
+        'lagoon', 'the+idiot+fyodor', 'frankestein', 'every+last+secret',
+        'rosemary\'s+baby', 'burnt+offerings', 'savaging+the+dark',
+        'words+of+radiance', 'joe+hill+strange+water', 'cosmos',
     ];
 
     // If the topic is not used already, it's going to be used
@@ -99,9 +102,9 @@ const getRecommendedBooks = async () => {
         'Action', 'Action', 'Action', 'Adventure', 'Adventure', 'Adventure',
         'Adventure', 'Thriller', 'Thriller', 'Thriller', 'Thriller', 'Horror',
         'Horror', 'Horror', 'Horror', 'Terror', 'Terror', 'Terror', 'Fantasy',
-        'Fantasy', 'Fantasy', 'Fantasy', 'Romance', 'Drama', 'Drama', 'Crime',
-        'Crime', 'Crime', 'Science Fiction', 'Science Fiction', 'Programming',
-        'Fitness', 'History', 'Business',
+        'Fantasy', 'Fantasy', 'Romance', 'Drama', 'Drama', 'Crime',
+        'Science Fiction', 'Science Fiction', 'Programming', 'Fitness',
+        'History', 'Business',
     ];
 
     // Books data collection (with three different genres)
