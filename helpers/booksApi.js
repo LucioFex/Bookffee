@@ -36,8 +36,9 @@ const manageData = (json, startIndex = 0) => {
     /* Function to manage the data from the Google Books API call */
     /* You can select from which index to search first (startIndex) */
     let correctBook;
+    let index = 0;
 
-    for (let index = 0; index < json.items.length; index += 1) {
+    for (index; index < json.items.length; index += 1) {
         const book = json.items[index + startIndex] ?? json.items[index];
         if ( // Checks for book (with photo and description)
             book.volumeInfo !== undefined
@@ -47,7 +48,7 @@ const manageData = (json, startIndex = 0) => {
             break;
         }
     }
-    return correctBook;
+    return [correctBook, index];
 };
 
 const getHomeBooks = async () => {
@@ -82,7 +83,7 @@ const getHomeBooks = async () => {
 
     // Books filter (by photo, name and description), getting only one per topic
     for (let index = 0; index < topics.length - 1; index += 1) {
-        books.push(manageData(booksData[index]));
+        books.push(manageData(booksData[index])[0]);
     }
 
     return books;
@@ -131,11 +132,39 @@ const getRecommendedBooks = async () => {
     // Books filter (by photo, name and description), saving only two per genre
     for (let index = 0; index < books.length; index += 1) {
         books[index].push(usedGenres[index]);
-        books[index].push(manageData(booksData[index], 0));
-        books[index].push(manageData(booksData[index], 1));
+        books[index].push(manageData(booksData[index], 0)[0]);
+        books[index].push(manageData(booksData[index], 1)[0]);
     }
 
     return books;
 };
 
-module.exports = { getHomeBooks, getRecommendedBooks };
+const getPopularBooks = async () => {
+    /* Function to get the most popular books data from the Google Books API */
+    /* The index/pagination will depend on the data received from the URL */
+    let booksData = [];
+    const books = [];
+    const apiUrl = { // Google Books Api URL
+        api: 'https://www.googleapis.com/books/v1/volumes?q=*',
+        config: '&maxResults=17&orderBy=relevance&startIndex=',
+        apiKey: `&keyes&key=${process.env.apiKey}`,
+    };
+
+    // Fetch to get 12 popular books
+    const startIndex = 0;
+    const url = apiUrl.api + apiUrl.config + startIndex + apiUrl.apiKey;
+
+    // Data fetch, Data conversion to JSON and get of 17 raw books
+    booksData = await fetch(url);
+    booksData = await booksData.json();
+
+
+    // Books filter (by photo, name and description), getting only one per topic
+    for (let index = 1; index <= 12; index += 1) {
+        books.push(manageData(booksData, index)[0]);
+    }
+
+    return books;
+};
+
+module.exports = { getHomeBooks, getRecommendedBooks, getPopularBooks };
