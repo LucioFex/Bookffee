@@ -37,7 +37,7 @@ const manageData = (json, startIndex = 0) => {
     /* You can select from which index to search first (startIndex) */
     let correctBook;
     let index = 0;
-
+    console.log(json)
     for (index; index < json.items.length; index += 1) {
         const book = json.items[index + startIndex] ?? json.items[index];
         if ( // Checks for book (with photo and description)
@@ -142,20 +142,20 @@ const getRecommendedBooks = async () => {
     return books;
 };
 
-const getPopularBooks = async () => {
-    /* Function to get the most popular books data from the Google Books API */
+const getAllBooks = async (orderBy, startIndex = 0) => {
+    /* Function to return 12 books from the Google Books API */
     /* The index/pagination will depend on the data received from the URL */
+    /* The order of books can be 'relevance' or 'newest' */
     let booksData = [];
     const books = [];
     const apiUrl = { // Google Books Api URL
         api: 'https://www.googleapis.com/books/v1/volumes?q=*',
-        config: '&maxResults=17&orderBy=relevance&startIndex=',
+        config: `&maxResults=17&orderBy=${orderBy}&startIndex=${startIndex}`,
         apiKey: `&keyes&key=${process.env.apiKey}`,
     };
 
     // Fetch to get 12 popular books
-    const startIndex = 0;
-    const url = apiUrl.api + apiUrl.config + startIndex + apiUrl.apiKey;
+    const url = apiUrl.api + apiUrl.config + apiUrl.apiKey;
 
     // Data fetch, Data conversion to JSON and get of 17 raw books
     booksData = await fetch(url);
@@ -169,4 +169,4 @@ const getPopularBooks = async () => {
     return books;
 };
 
-module.exports = { getHomeBooks, getRecommendedBooks, getPopularBooks };
+module.exports = { getHomeBooks, getRecommendedBooks, getAllBooks };

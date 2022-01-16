@@ -1,23 +1,23 @@
-<%- include( 'templates/head' , { home: " " , categories: "" ,
-    popular: " active", recent: "" , pageStyle: "css/mainSection.css"}) %>
+<%- include( 'templates/head' , { home: ' ' , categories: '' ,
+    popular: ' active', recent: '' , pageStyle: 'css/books-section.css'}) %>
 
-    <div class="container-md">
-        <section id="main-section">
-            <div class="row d-flex">
+    <div class='container-md'>
+        <section id='main-section'>
+            <div class='row d-flex'>
             <% for (let index = 0; index < popularBooks.length; index += 1) { %>
                     <% try { %>
                         <% popularBooks[index].imageLinks.thumbnail %>
                     <% } catch { continue }; %>
 
-                    <div class="col-md-auto my-3 mx-3 text-center">
-                        <img src="<%= popularBooks[index].imageLinks.thumbnail %>" alt="Sample Book" class="book-images">
-                        <p class="description"><%= popularBooks[index].description.slice(0, 237) + "..." %></p>
-                        <p class="mt-3 title"><%= popularBooks[index].title %></p>
+                    <div class='col-md-auto my-3 mx-3 text-center'>
+                        <img src='<%= popularBooks[index].imageLinks.thumbnail %>' alt='Sample Book' class='book-images'>
+                        <p class='description'><%= popularBooks[index].description.slice(0, 237) + '...' %></p>
+                        <p class='mt-3 title'><%= popularBooks[index].title %></p>
                     </div>
                 <% } %>
             </div>
         </section>
     </div>
 
-    <%- include("templates/latest-books") %>
-    <%- include("templates/footer") %>
+    <%- include('templates/latest-books') %>
+    <%- include('templates/footer') %>
