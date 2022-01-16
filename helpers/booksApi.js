@@ -130,10 +130,13 @@ const getRecommendedBooks = async () => {
     booksData = await Promise.all(booksData);
 
     // Books filter (by photo, name and description), saving only two per genre
+    let firstBook; let bookIndex;
     for (let index = 0; index < books.length; index += 1) {
         books[index].push(usedGenres[index]);
-        books[index].push(manageData(booksData[index], 0)[0]);
-        books[index].push(manageData(booksData[index], 1)[0]);
+        [firstBook, bookIndex] = manageData(booksData[index], 0); // Last index
+
+        books[index].push(firstBook);
+        books[index].push(manageData(booksData[index], bookIndex + 1)[0]);
     }
 
     return books;
@@ -157,7 +160,6 @@ const getPopularBooks = async () => {
     // Data fetch, Data conversion to JSON and get of 17 raw books
     booksData = await fetch(url);
     booksData = await booksData.json();
-
 
     // Books filter (by photo, name and description), getting only one per topic
     for (let index = 1; index <= 12; index += 1) {
