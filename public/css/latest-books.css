@@ -47,3 +47,10 @@
     background: #f0bc4d;
     border-color: #ecb949;
 }
+
+
+@media (max-width: 767px) {
+    .latest-books div + div {
+        display: none;
+    }
+}

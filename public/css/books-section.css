@@ -45,8 +45,12 @@
 }
 
 @media(max-width: 767px) {
+    #main-section div {
+        margin-left: 0 !important
+    }
+
     #main-section .title {
-        width: 100%;
+        width: 95%;
     }
 
     #main-section .book-images {
