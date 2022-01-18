@@ -15,18 +15,10 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/popular', async (req, res) => {
-    const popularBooks = await booksApi.getAllBooks('relevance');
+    const popularBooks = await booksApi.getPopularBooks();
     const latestBooks = await booksApi.getRecommendedBooks();
     res.render('most-popular', {
         sectionTitle: 'Most Popular', popularBooks, latestBooks,
-    });
-});
-
-router.get('/recent', async (req, res) => {
-    const recentBooks = await booksApi.getAllBooks('relevance'); // Fix for Recent Books later
-    const latestBooks = await booksApi.getRecommendedBooks();
-    res.render('most-recent', {
-        sectionTitle: 'Most Recent', recentBooks, latestBooks,
     });
 });
 

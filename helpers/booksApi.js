@@ -6,7 +6,7 @@ const orderTopics = () => {
     const ordenedTopics = [];
     const topics = [
         'fifty+shades+of+grey', 'clean+code', 'jd+barker', 'the+bronzed+beasts',
-        'stephen+king+pet+cementary', 'joe+hill+fire', 'hugh+howey', 'werewolf',
+        'stephen+king+pet+cementary', 'joe+hill+fire', 'werewolf', 'cosmos',
         'the+lord+of+The+Rings', 'the+black+Cat', 'the+mistery+of+salem\'s+lot',
         'Metro+2033', 'the+haunting+of+hill+house', 'the+diviners', 'neon+gods',
         'mexican+gothic', 'the+hell+house', 'dracula+bram+stoker', 'steve+jobs',
@@ -18,7 +18,7 @@ const orderTopics = () => {
         'bird+box', 'sherlock+holmes', 'lovecraft', 'let+the+right+one+in',
         'lagoon', 'the+idiot+fyodor', 'frankestein', 'every+last+secret',
         'rosemary\'s+baby', 'burnt+offerings', 'savaging+the+dark',
-        'words+of+radiance', 'joe+hill+strange+water', 'cosmos',
+        'words+of+radiance', 'joe+hill+strange+water',
     ];
 
     // If the topic is not used already, it's going to be used
@@ -37,7 +37,7 @@ const manageData = (json, startIndex = 0) => {
     /* You can select from which index to search first (startIndex) */
     let correctBook;
     let index = 0;
-    console.log(json)
+
     for (index; index < json.items.length; index += 1) {
         const book = json.items[index + startIndex] ?? json.items[index];
         if ( // Checks for book (with photo and description)
@@ -142,7 +142,7 @@ const getRecommendedBooks = async () => {
     return books;
 };
 
-const getAllBooks = async (orderBy, startIndex = 0) => {
+const getPopularBooks = async (startIndex = 0) => {
     /* Function to return 12 books from the Google Books API */
     /* The index/pagination will depend on the data received from the URL */
     /* The order of books can be 'relevance' or 'newest' */
@@ -150,7 +150,7 @@ const getAllBooks = async (orderBy, startIndex = 0) => {
     const books = [];
     const apiUrl = { // Google Books Api URL
         api: 'https://www.googleapis.com/books/v1/volumes?q=*',
-        config: `&maxResults=17&orderBy=${orderBy}&startIndex=${startIndex}`,
+        config: `&maxResults=17&orderBy=relevance&startIndex=${startIndex}`,
         apiKey: `&keyes&key=${process.env.apiKey}`,
     };
 
@@ -169,4 +169,4 @@ const getAllBooks = async (orderBy, startIndex = 0) => {
     return books;
 };
 
-module.exports = { getHomeBooks, getRecommendedBooks, getAllBooks };
+module.exports = { getHomeBooks, getRecommendedBooks, getPopularBooks };
