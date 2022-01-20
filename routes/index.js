@@ -6,7 +6,7 @@ const router = express.Router();
 const booksApi = require('../helpers/booksApi');
 
 // Routes of the main pages
-router.get('/', async (req, res) => {
+router.get('/', async (req, res) => { // Home route
     const homeBooks = await booksApi.getHomeBooks();
     const latestBooks = await booksApi.getRecommendedBooks();
     res.render('home', {
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
     });
 });
 
-router.get('/popular', async (req, res) => {
+router.get('/popular', async (req, res) => { // Popular Books route
     const popularBooks = await booksApi.getPopularBooks();
     const latestBooks = await booksApi.getRecommendedBooks();
     res.render('most-popular', {
@@ -27,4 +27,4 @@ router.use((req, res) => {
     res.status(404).render('page-not-found');
 });
 
-module.exports = router;
+module.exports = { router };

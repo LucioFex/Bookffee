@@ -9,7 +9,8 @@
 ### Bookffee is a website to search for books, which allows you to know their prices and synopses, as well as being able to filter them by genre, popularity and date.
 
 <p align="center">
-    <img src="public/src/sample-image.png" alt="Bookffee logo" width="1000" />
+    <img src="public/src/sample-image1.png" alt="Bookffee logo" width="1000"/>
+    <img src="public/src/sample-image2.png" alt="Bookffee logo" width="1000"/>
 </p>
 
 ## Technologies used in the project:
@@ -19,8 +20,8 @@
 - JavaScript (ECMAScript).
 - Node.js / Express.js.
 - Bootstrap 5.
-- EJS.
 - Google Books API.
+- EJS.
 
 ## How to run:
 
@@ -42,7 +43,7 @@ the opening of an issue to check the change you want to make.
 
 ## Project Status:
 
-### `Version: 0.5.2` | `Still in Development`
+### `Version: 0.5.3` | `Still in Development`
 <!-- <h3><i>You can access Bookffee by clicking <a href="" target="_blank">here</a>.</i></h3> -->
 
 ## License
