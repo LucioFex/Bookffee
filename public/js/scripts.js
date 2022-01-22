@@ -5,7 +5,6 @@ const copiedEmailMessage = document.getElementById('copiedMessage');
 
 const copyEmailToClipboard = () => {
     /* Function to copy the website's author Email to the clipboard */
-
     copiedEmailMessage.style.opacity = '100%';
     contactButton.removeEventListener('click', copyEmailToClipboard, false);
 

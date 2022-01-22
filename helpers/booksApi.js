@@ -38,8 +38,15 @@ const manageData = (json, startIndex = 0) => {
     let correctBook;
     let index = 0;
 
+    // Check for the "Too Many Requests" error status
+    try {
+        if (json.error.code === 429) return null;
+    } catch {
+        // The app continue running
+    }
+
     for (index; index < json.items.length; index += 1) {
-        const book = json.items[index + startIndex] ?? json.items[index];
+        const book = json.items[index + startIndex];
         if ( // Checks for book (with photo and description)
             book.volumeInfo !== undefined
             && book.volumeInfo.description !== undefined
@@ -82,8 +89,11 @@ const getHomeBooks = async () => {
     booksData = await Promise.all(booksData);
 
     // Books filter (by photo, name and description), getting only one per topic
+    let data;
     for (let index = 0; index < topics.length - 1; index += 1) {
-        books.push(manageData(booksData[index])[0]);
+        data = manageData(booksData[index]);
+        if (data === null) continue;
+        books.push(data[0]);
     }
 
     return books;
@@ -130,13 +140,19 @@ const getRecommendedBooks = async () => {
     booksData = await Promise.all(booksData);
 
     // Books filter (by photo, name and description), saving only two per genre
-    let firstBook; let bookIndex;
+    let firstBook; let bookIndex; let data;
     for (let index = 0; index < books.length; index += 1) {
-        books[index].push(usedGenres[index]);
-        [firstBook, bookIndex] = manageData(booksData[index], 0); // Last index
+        data = manageData(booksData[index], 0);
+        if (data === null) continue;
 
+        books[index].push(usedGenres[index]);
+        [firstBook, bookIndex] = data; // Last index
         books[index].push(firstBook);
-        books[index].push(manageData(booksData[index], bookIndex + 1)[0]);
+
+        data = manageData(booksData[index], bookIndex + 1);
+        if (data === null) continue;
+
+        books[index].push(data[0]);
     }
 
     return books;
@@ -162,8 +178,11 @@ const getPopularBooks = async (startIndex = 0) => {
     booksData = await booksData.json();
 
     // Books filter (by photo, name and description), getting only one per topic
+    let data;
     for (let index = 1; index <= 12; index += 1) {
-        books.push(manageData(booksData, index)[0]);
+        data = manageData(booksData, index);
+        if (data === null) continue;
+        books.push(data[0]);
     }
 
     return books;

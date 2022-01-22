@@ -7,19 +7,31 @@ const booksApi = require('../helpers/booksApi');
 
 // Routes of the main pages
 router.get('/', async (req, res) => { // Home route
-    const homeBooks = await booksApi.getHomeBooks();
-    const latestBooks = await booksApi.getRecommendedBooks();
-    res.render('home', {
-        sectionTitle: 'Home', homeBooks, latestBooks,
-    });
+    try {
+        const homeBooks = await booksApi.getHomeBooks();
+        const latestBooks = await booksApi.getRecommendedBooks();
+        res.render('home', {
+            sectionTitle: 'Home', homeBooks, latestBooks,
+        });
+    } catch (err) { // In case there's an error, no books will be displayed
+        res.render('home', {
+            sectionTitle: 'Home', homeBooks: [], latestBooks: [],
+        });
+    }
 });
 
 router.get('/popular', async (req, res) => { // Popular Books route
-    const popularBooks = await booksApi.getPopularBooks();
-    const latestBooks = await booksApi.getRecommendedBooks();
-    res.render('most-popular', {
-        sectionTitle: 'Most Popular', popularBooks, latestBooks,
-    });
+    try {
+        const popularBooks = await booksApi.getPopularBooks();
+        const latestBooks = await booksApi.getRecommendedBooks();
+        res.render('most-popular', {
+            sectionTitle: 'Most Popular', popularBooks, latestBooks,
+        });
+    } catch (err) { // In case there's an error, no books will be displayed
+        res.render('most-popular', {
+            sectionTitle: 'Most Popular', popularBooks: [], latestBooks: [],
+        });
+    }
 });
 
 // 404 http status response
