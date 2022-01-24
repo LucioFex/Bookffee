@@ -14,15 +14,17 @@ router.get('/', async (req, res) => { // Home route
             sectionTitle: 'Home', homeBooks, latestBooks,
         });
     } catch (err) { // In case there's an error, no books will be displayed
-        res.render('home', {
-            sectionTitle: 'Home', homeBooks: [], latestBooks: [],
-        });
+        res.status(429).render('page-not-found');
     }
 });
 
 router.get('/popular', async (req, res) => { // Popular Books route
+    // Checks the popular section's page
+    let page = parseInt(req.query.page) || 1;
+    if (page < 1 || typeof (page) !== 'number') page = 1;
+
     try {
-        const popularBooks = await booksApi.getPopularBooks();
+        const popularBooks = await booksApi.getPopularBooks(page);
         const latestBooks = await booksApi.getRecommendedBooks();
         res.render('most-popular', {
             sectionTitle: 'Most Popular', popularBooks, latestBooks,

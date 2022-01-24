@@ -99,6 +99,42 @@ const getHomeBooks = async () => {
     return books;
 };
 
+const getPopularBooks = async (page = 0) => {
+    /* Function to return 12 books from the Google Books API */
+    /* The index/pagination will depend on the data received from the URL */
+    /* The order of books can be 'relevance' or 'newest' */
+    let booksData = [];
+    const books = [];
+    const apiUrl = { // Google Books Api URL
+        api: 'https://www.googleapis.com/books/v1/volumes?q=*',
+        config: '&maxResults=17&orderBy=relevance&startIndex=',
+        apiKey: `&keyes&key=${process.env.apiKey}`,
+    };
+
+    // Fetch to get 12 popular books
+    const startIndex = (page - 1) * 12;
+    const url = apiUrl.api + apiUrl.config + startIndex + apiUrl.apiKey;
+
+    // Data fetch, Data conversion to JSON and get of 17 raw books
+    booksData = await fetch(url);
+    booksData = await booksData.json();
+
+    // Books filter (by photo, name and description), getting only one per topic
+    let data; let index = 0;
+    while (books.length < 12) {
+        index += 1;
+        if (index > booksData.length) break;
+
+        // Avoid repeated books
+        data = manageData(booksData, index);
+        if (data === null || books.includes(data[0])) continue;
+
+        books.push(data[0]);
+    }
+
+    return books;
+};
+
 const getRecommendedBooks = async () => {
     /* Function to get 6 recent books divided by 3 sections */
     /* Every section will be focused on one genre */
@@ -153,36 +189,6 @@ const getRecommendedBooks = async () => {
         if (data === null) continue;
 
         books[index].push(data[0]);
-    }
-
-    return books;
-};
-
-const getPopularBooks = async (startIndex = 0) => {
-    /* Function to return 12 books from the Google Books API */
-    /* The index/pagination will depend on the data received from the URL */
-    /* The order of books can be 'relevance' or 'newest' */
-    let booksData = [];
-    const books = [];
-    const apiUrl = { // Google Books Api URL
-        api: 'https://www.googleapis.com/books/v1/volumes?q=*',
-        config: `&maxResults=17&orderBy=relevance&startIndex=${startIndex}`,
-        apiKey: `&keyes&key=${process.env.apiKey}`,
-    };
-
-    // Fetch to get 12 popular books
-    const url = apiUrl.api + apiUrl.config + apiUrl.apiKey;
-
-    // Data fetch, Data conversion to JSON and get of 17 raw books
-    booksData = await fetch(url);
-    booksData = await booksData.json();
-
-    // Books filter (by photo, name and description), getting only one per topic
-    let data;
-    for (let index = 1; index <= 12; index += 1) {
-        data = manageData(booksData, index);
-        if (data === null) continue;
-        books.push(data[0]);
     }
 
     return books;
