@@ -8,6 +8,11 @@
     color: #f0f0f0;
 }
 
+#main-section div a {
+    text-decoration: none;
+    color: #f0f0f0;
+}
+
 #main-section .book-images {
     width: 245px;
     height: calc(245px * 1.609);
