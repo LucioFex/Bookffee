@@ -49,6 +49,30 @@
     font-weight: 250;
 }
 
+#pagination {
+    background: #0F2027;
+}
+
+#pagination .page-item a {
+    background: #182f3a !important;
+    color: #f0f0f0 !important;
+    border-color: #132730;
+    font-weight: bold;
+    border-radius: 20%;
+}
+
+#pagination .page-item a:hover {
+    background: #f0b331 !important;
+    color: #0f1f27 !important;
+    border-color: #da9c19;
+}
+
+#pagination .page-item.active a {
+    background: #eeb63e !important;
+    color: #0f1f27 !important;
+    border-color: #dba32b;
+}
+
 @media(max-width: 767px) {
     #main-section div {
         margin-left: 0 !important
