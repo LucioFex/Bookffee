@@ -4,7 +4,7 @@
     <div class='container-md'>
         <section id='main-section'>
             <div class='row d-flex'>
-            <% for (let index = 0; index < popularBooks.length; index += 1) { %>
+            <% for (let index = 0; index < 12; index += 1) { %>
                     <% try { %>
                         <% popularBooks[index].imageLinks.thumbnail %>
                     <% } catch { continue }; %>
@@ -19,11 +19,25 @@
         </section>
         <nav id="pagination">
             <ul class="pagination d-flex justify-content-center">
-                <li class="page-item mx-1"><a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a></li>
-                <li class="page-item active mx-1"><a class="page-link" href="#">1</a></li>
-                <li class="page-item mx-1"><a class="page-link" href="#">2</a></li>
-                <li class="page-item mx-1"><a class="page-link" href="#">3</a></li>
-                <li class="page-item mx-1"><a class="page-link" href="#">. . .</a></li>
+                <% let totalPagination = 0; %>
+                <% let activePage = ''; %>
+                <% if (page > 1) { %>
+                    <li class="page-item mx-1">
+                        <a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a>
+                    </li>
+                <% } %>
+
+                <% for (let index = page - 1; index < page + 3; index += 1) { %>
+                    <% activePage = ''; %>
+                    <% if (index === page) activePage = 'active'; %>
+                    <li class="page-item <%= activePage %> mx-1">
+                        <a class="page-link" href="/popular?page=<%= index %>"><%= index %></a>
+                    </li>
+                <% } %>
+                <!-- <li class="page-item mx-1"><a class="page-link" href="/popular?page=2">2</a></li>
+                <li class="page-item active mx-1"><a class="page-link" href="/popular?page=3">3</a></li> -->
+
+                <li class="page-item disabled mx-1"><a class="page-link" href="#">. . .</a></li>
                 <li class="page-item mx-1"><a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a></li>
             </ul>
         </nav>

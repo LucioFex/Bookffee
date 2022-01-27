@@ -27,11 +27,11 @@ router.get('/popular', async (req, res) => { // Popular Books route
         const popularBooks = await booksApi.getPopularBooks(page);
         const latestBooks = await booksApi.getRecommendedBooks();
         res.render('most-popular', {
-            sectionTitle: 'Most Popular', popularBooks, latestBooks,
+            sectionTitle: 'Most Popular', popularBooks, latestBooks, page,
         });
     } catch (err) { // In case there's an error, no books will be displayed
         res.render('most-popular', {
-            sectionTitle: 'Most Popular', popularBooks: [], latestBooks: [],
+            sectionTitle: 'Most Popular', popularBooks: [], latestBooks: [], page: 1,
         });
     }
 });
