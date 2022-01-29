@@ -41,14 +41,15 @@ const manageData = (json, startIndex = 0) => {
     // Check for the "Too Many Requests" error status
     try {
         if (json.error.code === 429) return null;
-    } catch {
-        // The app continue running
+    } catch (err) {
+        // The app continues running
     }
 
     for (index; index < json.items.length; index += 1) {
         const book = json.items[index + startIndex];
         if ( // Checks for book (with photo and description)
-            book.volumeInfo !== undefined
+            book !== undefined
+            && book.volumeInfo !== undefined
             && book.volumeInfo.description !== undefined
             && book.volumeInfo.imageLinks !== undefined) {
             correctBook = book.volumeInfo;
@@ -100,14 +101,15 @@ const getHomeBooks = async () => {
 };
 
 const getPopularBooks = async (page = 0) => {
-    /* Function to return 12 books from the Google Books API */
-    /* The index/pagination will depend on the data received from the URL */
-    /* The order of books can be 'relevance' or 'newest' */
+    /* Function to return 36 books from the Google Books API.
+    The order of the books is by 'relevance'.
+    It returns 36 because 12 * 3 = 36, and the pagination can approve that
+    there are still 1 or 2 pages more to check from the current one. */
     let booksData = [];
     const books = [];
     const apiUrl = { // Google Books Api URL
         api: 'https://www.googleapis.com/books/v1/volumes?q=*',
-        config: '&maxResults=17&orderBy=relevance&startIndex=',
+        config: '&maxResults=40&orderBy=relevance&startIndex=',
         apiKey: `&keyes&key=${process.env.apiKey}`,
     };
 
@@ -121,9 +123,9 @@ const getPopularBooks = async (page = 0) => {
 
     // Books filter (by photo, name and description), getting only one per topic
     let data; let index = 0;
-    while (books.length < 12) {
+    while (books.length < 40) {
         index += 1;
-        if (index > booksData.length) break;
+        if (index > booksData.items.length) break;
 
         // Avoid repeated books
         data = manageData(booksData, index);
@@ -131,7 +133,6 @@ const getPopularBooks = async (page = 0) => {
 
         books.push(data[0]);
     }
-
     return books;
 };
 

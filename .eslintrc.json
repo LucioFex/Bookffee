@@ -15,6 +15,7 @@
         "indent": ["warn", 4],
         "linebreak-style": ["off", "windows"],
         "no-continue": "off",
-        "radix": "off"
+        "radix": "off",
+        "no-constant-condition": "off"
     }
 }

@@ -1,0 +1,39 @@
+<nav id="pagination"> <%# Refactor later... %>
+    <ul class="pagination d-flex justify-content-center">
+        <% let activePage = ''; %>
+        <% let nextPageButton = true; %>
+        <% if (page > 2) { %>
+            <li class="page-item mx-1">
+                <a class="page-link" href="/popular?page=1"><i class="fas fa-angle-double-left"></i></a>
+            </li>
+        <% } %>
+        <% if (page > 1) { %>
+            <li class="page-item mx-1">
+                <a class="page-link" href="/popular?page=<%= page - 1 %>"><i class="fas fa-chevron-left"></i></a>
+            </li>
+        <% } %>
+
+        <% for (let index = page - 1; index < page + 3; index += 1) { %>
+            <% activePage = ''; %>
+            <% if (index === 0) { %>
+                <% continue; %>
+            <% } else if (index === page) { %>
+                <% activePage = 'active'; %>
+            <% } else if (index - 2 === page && popularBooks.length <= 24) { %>
+                <% continue %>
+            <% } else if (index - 1 === page && popularBooks.length <= 12) { %>
+                <% nextPageButton = false; %>
+                <% break %>
+            <% } %>
+
+            <li class="page-item <%= activePage %> mx-1">
+                <a class="page-link" href="/popular?page=<%= index %>"><%= index %></a>
+            </li>
+        <% } %>
+
+        <% if (nextPageButton) { %>
+            <li class="page-item disabled mx-1"><a class="page-link" href="#">. . .</a></li>
+            <li class="page-item mx-1"><a class="page-link" href="/popular?page=<%= page + 1 %>"><i class="fas fa-chevron-right"></i></a></li>
+        <% } %>
+    </ul>
+</nav>
