@@ -19,9 +19,9 @@
                 <% continue; %>
             <% } else if (index === page) { %>
                 <% activePage = 'active'; %>
-            <% } else if (index - 2 === page && popularBooks.length <= 24) { %>
+            <% } else if (index - 2 === page && books.length <= 24) { %>
                 <% continue %>
-            <% } else if (index - 1 === page && popularBooks.length <= 12) { %>
+            <% } else if (index - 1 === page && books.length <= 12) { %>
                 <% nextPageButton = false; %>
                 <% break %>
             <% } %>
@@ -32,7 +32,7 @@
         <% } %>
 
         <% if (nextPageButton) { %>
-            <li class="page-item disabled mx-1"><a class="page-link" href="#">. . .</a></li>
+            <li class="page-item disabled mx-1"><a class="page-link" id="extra-pages" href="#">. . .</a></li>
             <li class="page-item mx-1"><a class="page-link" href="/popular?page=<%= page + 1 %>"><i class="fas fa-chevron-right"></i></a></li>
         <% } %>
     </ul>
