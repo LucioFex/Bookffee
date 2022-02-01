@@ -1,25 +1,11 @@
 const fetch = require('node-fetch');
+const { getJsonData: getBookLabels } = require('./commonFunctions');
 
 const orderTopics = () => {
     /* Function to select and order 12 default books for the 'Home' route */
     let randomTopic;
     const ordenedTopics = [];
-    const topics = [
-        'fifty+shades+of+grey', 'clean+code', 'jd+barker', 'the+bronzed+beasts',
-        'stephen+king+pet+cementary', 'joe+hill+fire', 'werewolf', 'cosmos',
-        'the+lord+of+The+Rings', 'the+black+Cat', 'the+mistery+of+salem\'s+lot',
-        'Metro+2033', 'the+haunting+of+hill+house', 'the+diviners', 'neon+gods',
-        'mexican+gothic', 'the+hell+house', 'dracula+bram+stoker', 'steve+jobs',
-        'asylum', 'robin+cook', 'bird+box', 'van+hellsing', 'shadow+of+the+fox',
-        'the+witcher', 'game+of+thrones', 'the+windup+girl', 'leviathan+wakes',
-        'metamorphosis+kafka', 'all+her+little+secrets', 'not+a+happy+family',
-        'think+of+a+number', 'harry+potter', 'pretty+girls+karin+slaughter',
-        'the+poppy+war', 'outlander', 'the+fifth+season', 'fahrenheit+451',
-        'bird+box', 'sherlock+holmes', 'lovecraft', 'let+the+right+one+in',
-        'lagoon', 'the+idiot+fyodor', 'frankestein', 'every+last+secret',
-        'rosemary\'s+baby', 'burnt+offerings', 'savaging+the+dark',
-        'words+of+radiance', 'joe+hill+strange+water',
-    ];
+    const { topics } = getBookLabels(); // Book topics
 
     // If the topic is not used already, it's going to be used
     for (let index = 0; ordenedTopics.length <= 12; index += 1) {
@@ -41,9 +27,7 @@ const manageData = (json, startIndex = 0) => {
     // Check for the "Too Many Requests" error status
     try {
         if (json.error.code === 429) return null;
-    } catch (err) {
-        // The app continues running
-    }
+    } catch (err) { /* The app continues running */ }
 
     for (index; index < json.items.length; index += 1) {
         const book = json.items[index + startIndex];
@@ -146,14 +130,7 @@ const getRecommendedBooks = async () => {
         api: 'https://www.googleapis.com/books/v1/volumes?q=subject:',
         config: `&maxResults=5&orderBy=newest&keyes&key=${process.env.apiKey}`,
     };
-    const genres = [ // Book genres
-        'Action', 'Action', 'Action', 'Adventure', 'Adventure', 'Adventure',
-        'Adventure', 'Thriller', 'Thriller', 'Thriller', 'Thriller', 'Horror',
-        'Horror', 'Horror', 'Horror', 'Terror', 'Terror', 'Terror', 'Fantasy',
-        'Fantasy', 'Fantasy', 'Romance', 'Drama', 'Drama', 'Crime',
-        'Science Fiction', 'Science Fiction', 'Programming', 'Fitness',
-        'History', 'Business',
-    ];
+    const { genres } = getBookLabels(); // Book genres
 
     // Books data collection (with three different genres)
     let genre; let url;

@@ -1,7 +1,9 @@
-<nav id="pagination"> <%# Refactor later... %>
+<nav id="pagination">
     <ul class="pagination d-flex justify-content-center">
         <% let activePage = ''; %>
         <% let nextPageButton = true; %>
+
+        <%# Check if there are more than 1 or 2 pages to add 'left arrows' pagination buttons %>
         <% if (page > 2) { %>
             <li class="page-item mx-1">
                 <a class="page-link" href="/popular?page=1"><i class="fas fa-angle-double-left"></i></a>
@@ -13,17 +15,19 @@
             </li>
         <% } %>
 
+        <%# Numeration of the availables pages %>
+        <%# e.g: Previous Page | (Current Page) | First Next Page | Second Next Page %>
         <% for (let index = page - 1; index < page + 3; index += 1) { %>
             <% activePage = ''; %>
-            <% if (index === 0) { %>
+            <% if (index < 1) { %> <%# There can't be pages smaller than 1 %>
                 <% continue; %>
-            <% } else if (index === page) { %>
+            <% } else if (index === page) { %> <%# If the current page is in the loop, it highlights the number button %>
                 <% activePage = 'active'; %>
-            <% } else if (index - 2 === page && books.length <= 24) { %>
-                <% continue %>
-            <% } else if (index - 1 === page && books.length <= 12) { %>
+            <% } else if (index - 2 === page && books.length <= 24) { %> <%# 24 == 12*(2) --> (2) available pages %>
+                <% continue; %>
+            <% } else if (index - 1 === page && books.length <= 12) { %> <%# 12 == 12*(1) --> (1) available page %>
                 <% nextPageButton = false; %>
-                <% break %>
+                <% break; %>
             <% } %>
 
             <li class="page-item <%= activePage %> mx-1">
