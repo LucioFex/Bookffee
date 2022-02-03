@@ -1,6 +1,6 @@
 {
   "name": "Bookffee",
-  "version": "0.5.9",
+  "version": "0.6.3",
   "description": "Bookffee is a website to search for books, which allows you to know their prices and synopses, as well as being able to filter them by genre, popularity and date.",
   "main": "app.js",
   "scripts": {
@@ -12,12 +12,12 @@
     "url": "git+https://github.com/LucioFex/book-search.git"
   },
   "keywords": [
-    "books",
     "browser",
     "search",
     "genre",
-    "prices",
-    "book"
+    "books",
+    "book",
+    "web"
   ],
   "author": "Luciano Esteban",
   "license": "MIT",
