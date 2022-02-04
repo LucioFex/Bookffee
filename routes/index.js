@@ -40,16 +40,18 @@ router.get('/popular', async (req, res) => { // Popular Books route
 router.get('/categories', async (req, res) => { // Categorized Books route
     const page = parseInt(req.query.page) || 1;
     const { subject } = req.query;
-    console.log(subject);
 
     try {
-        const [subjectBooks, subjectName] = await booksApi.getCategorizedBooks(subject, page);
+        const [
+            subjectBooks, subjectName,
+        ] = await booksApi.getCategorizedBooks(subject, page);
+
         const latestBooks = await booksApi.getRecommendedBooks();
         res.render('categories', {
             sectionTitle: `Category: ${subjectName}`,
+            subject: subjectName,
             subjectBooks,
             latestBooks,
-            subject,
             page,
         });
     } catch (err) { // In case there's an error, no books will be displayed

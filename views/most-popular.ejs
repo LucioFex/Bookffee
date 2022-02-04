@@ -17,7 +17,7 @@
                 <% } %>
             </div>
         </section>
-        <%- include( 'templates/pagination' , { books: popularBooks, page }) %>
+        <%- include( 'templates/pagination' , { books: popularBooks, route: 'popular', subject: '', page }) %>
     </div>
 
     <%- include('templates/latest-books') %>
