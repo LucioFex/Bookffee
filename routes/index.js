@@ -19,9 +19,7 @@ router.get('/', async (req, res) => { // Home route
 });
 
 router.get('/popular', async (req, res) => { // Popular Books route
-    // Checks the popular section's page
-    let page = parseInt(req.query.page) || 1;
-    if (page < 1 || typeof (page) !== 'number') page = 1;
+    const page = parseInt(req.query.page) || 1;
 
     try {
         const popularBooks = await booksApi.getPopularBooks(page);
@@ -31,7 +29,37 @@ router.get('/popular', async (req, res) => { // Popular Books route
         });
     } catch (err) { // In case there's an error, no books will be displayed
         res.render('most-popular', {
-            sectionTitle: 'Most Popular', popularBooks: [], latestBooks: [], page: 1,
+            sectionTitle: 'Most Popular',
+            popularBooks: [],
+            latestBooks: [],
+            page: 1,
+        });
+    }
+});
+
+router.get('/categories', async (req, res) => { // Categorized Books route
+    const page = parseInt(req.query.page) || 1;
+    const { subject } = req.query;
+
+    try {
+        console.log("Ahí viene --- -- -- -");
+        const subjectBooks = await booksApi.getCategorizedBooks(subject, page);
+        console.log("BOOOOKS", subjectBooks);
+        const latestBooks = await booksApi.getRecommendedBooks();
+        res.render('categories', {
+            sectionTitle: 'Categories',
+            subjectBooks,
+            latestBooks,
+            subject,
+            page,
+        });
+    } catch (err) { // In case there's an error, no books will be displayed
+        res.render('categories', {
+            sectionTitle: 'Categories',
+            subjectBooks: [],
+            latestBooks: [],
+            subject: null,
+            page: 1,
         });
     }
 });

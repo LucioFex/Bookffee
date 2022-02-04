@@ -24,8 +24,7 @@ const manageData = (json, startIndex = 0) => {
     let correctBook;
     let index = 0;
 
-    // Check for the "Too Many Requests" error status
-    try {
+    try { // Check for the "Too Many Requests" error status
         if (json.error.code === 429) return null;
     } catch (err) { /* The app continues running */ }
 
@@ -85,9 +84,9 @@ const getHomeBooks = async () => {
 };
 
 const getPopularBooks = async (page = 0) => {
-    /* Function to return 36 books from the Google Books API.
+    /* Function to return 40 books from the Google Books API.
     The order of the books is by 'relevance'.
-    It returns 36 because 12 * 3 = 36, and the pagination can approve that
+    It returns 40 because 12 * 3 = 36, and the pagination can approve that
     there are still 1 or 2 pages more to check from the current one. */
     let booksData = [];
     const books = [];
@@ -97,11 +96,64 @@ const getPopularBooks = async (page = 0) => {
         apiKey: `&keyes&key=${process.env.apiKey}`,
     };
 
+    let pageNum = page; // Checks if the page's number is bigger than 1
+    if (page < 1 || typeof (page) !== 'number') pageNum = 1;
+
     // Fetch to get 12 popular books
-    const startIndex = (page - 1) * 12;
+    const startIndex = (pageNum - 1) * 12;
     const url = apiUrl.api + apiUrl.config + startIndex + apiUrl.apiKey;
 
-    // Data fetch, Data conversion to JSON and get of 17 raw books
+    // Data fetch, Data conversion to JSON and get of 40 raw books
+    booksData = await fetch(url);
+    booksData = await booksData.json();
+
+    // Books filter (by photo, name and description), getting only one per topic
+    let data; let index = 0;
+    while (books.length < 40) {
+        index += 1;
+        if (index > booksData.items.length) break;
+
+        // Avoid repeated books
+        data = manageData(booksData, index);
+        if (data === null || books.includes(data[0])) continue;
+
+        books.push(data[0]);
+    }
+    return books;
+};
+
+const getCategorizedBooks = async (subject, page = 0) => {
+    /* Function to return 40 books from the Google Books API.
+    The order of the books is by 'relevance'.
+    It returns 40 because 12 * 3 = 36, and the pagination can approve that
+    there are still 1 or 2 pages more to check from the current one. */
+    let booksData = [];
+    const books = [];
+    const apiUrl = { // Google Books Api URL
+        api: 'https://www.googleapis.com/books/v1/volumes?q=subject:',
+        config: '&maxResults=40&orderBy=relevance&startIndex=',
+        apiKey: `&keyes&key=${process.env.apiKey}`,
+    };
+
+    // Checks if the page's number is bigger than 1
+    let pageNum = page;
+    if (pageNum < 1 || typeof (pageNum) !== 'number') pageNum = 1;
+
+    // Replace the subject if the category is not recognized
+    let category = subject;
+    const { genres } = await getBookLabels('./json/bookLabels.json');
+
+    if (!Object.keys(genres).includes(category)) {
+        category = genres[Math.floor(Math.random() * genres.length)];
+    }
+
+    // Fetch to get 12 categorized books
+    const startIndex = (pageNum - 1) * 12;
+    const url = (
+        apiUrl.api + category + apiUrl.config + startIndex + apiUrl.apiKey
+    );
+
+    // Data fetch, Data conversion to JSON and get of 40 raw books
     booksData = await fetch(url);
     booksData = await booksData.json();
 
@@ -172,4 +224,6 @@ const getRecommendedBooks = async () => {
     return books;
 };
 
-module.exports = { getHomeBooks, getRecommendedBooks, getPopularBooks };
+module.exports = {
+    getHomeBooks, getPopularBooks, getCategorizedBooks, getRecommendedBooks,
+};

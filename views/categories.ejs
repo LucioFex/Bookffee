@@ -1,11 +1,24 @@
-<%- include(
-    'templates/head', {
-        home: "",
-        categories: " active",
-        popular: "",
-        recent: "",
-        pageStyle: "css/categories.css"
-        }) %>
+<%- include( 'templates/head' , { home: '' , categories: ' active' ,
+    popular: '', recent: '' , pageStyle: 'css/books-section.css'}) %>
 
-    <%- include("templates/latest-books") %>
-    <%- include("templates/footer") %>
+    <div class='container-md'>
+        <section id='main-section'>
+            <div class='row d-flex'>
+            <% for (let index = 0; index < 12; index += 1) { %>
+                    <% try { %>
+                        <% subjectBooks[index].imageLinks.thumbnail %>
+                    <% } catch (err) { continue }; %>
+
+                    <div class='col-md-auto my-3 mx-3 text-center'>
+                        <img src='<%= subjectBooks[index].imageLinks.thumbnail %>' alt='Sample Book' class='book-images'>
+                        <p class='description'><%= subjectBooks[index].description.slice(0, 237) + '...' %></p>
+                        <p class='mt-3 title'><%= subjectBooks[index].title %></p>
+                    </div>
+                <% } %>
+            </div>
+        </section>
+        <%- include( 'templates/pagination' , { books: subjectBooks, page }) %>
+    </div>
+
+    <%- include('templates/latest-books') %>
+    <%- include('templates/footer') %>
