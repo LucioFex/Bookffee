@@ -143,7 +143,7 @@ const getCategorizedBooks = async (subject, page = 0) => {
     let category = subject;
     const { genres } = await getBookLabels('./json/bookLabels.json');
 
-    if (!Object.keys(genres).includes(category)) {
+    if (!genres.includes(category)) {
         category = genres[Math.floor(Math.random() * genres.length)];
     }
 
@@ -169,7 +169,7 @@ const getCategorizedBooks = async (subject, page = 0) => {
 
         books.push(data[0]);
     }
-    return books;
+    return [books, category];
 };
 
 const getRecommendedBooks = async () => {
