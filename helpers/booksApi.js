@@ -85,7 +85,7 @@ const getHomeBooks = async () => {
 
 const getPopularBooks = async (page = 0) => {
     /* Function to return 40 books from the Google Books API.
-    The order of the books is by 'relevance'.
+    The order of the books is by 'date'.
     It returns 40 because 12 * 3 = 36, and the pagination can approve that
     there are still 1 or 2 pages more to check from the current one. */
     let booksData = [];
@@ -124,14 +124,14 @@ const getPopularBooks = async (page = 0) => {
 
 const getCategorizedBooks = async (subject, page = 0) => {
     /* Function to return 40 books from the Google Books API.
-    The order of the books is by 'relevance'.
+    The order of the books is by 'date'.
     It returns 40 because 12 * 3 = 36, and the pagination can approve that
     there are still 1 or 2 pages more to check from the current one. */
     let booksData = [];
     const books = [];
     const apiUrl = { // Google Books Api URL
         api: 'https://www.googleapis.com/books/v1/volumes?q=subject:',
-        config: '&maxResults=40&orderBy=relevance&startIndex=',
+        config: '&maxResults=40&orderBy=newest&startIndex=',
         apiKey: `&keyes&key=${process.env.apiKey}`,
     };
 
@@ -141,10 +141,10 @@ const getCategorizedBooks = async (subject, page = 0) => {
 
     // Replace the subject if the category is not recognized
     let category = subject;
-    const { genres } = await getBookLabels('./json/bookLabels.json');
+    const { categories } = await getBookLabels('./json/bookLabels.json');
 
-    if (!genres.includes(category)) {
-        category = genres[Math.floor(Math.random() * genres.length)];
+    if (!categories.includes(category)) {
+        category = categories[Math.floor(Math.random() * categories.length)];
     }
 
     // Fetch to get 12 categorized books

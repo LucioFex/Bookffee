@@ -17,9 +17,16 @@
     ],
     "genres": [
         "Action", "Action", "Action", "Adventure", "Adventure", "Adventure",
+        "Science Fiction", "Programming", "Fitness", "History", "Business",
         "Thriller", "Thriller", "Thriller", "Horror", "Horror", "Horror",
         "Terror", "Terror", "Terror", "Fantasy", "Fantasy", "Fantasy",
         "Romance", "Drama", "Drama", "Crime", "Science Fiction",
-        "Science Fiction", "Programming", "Fitness", "History", "Business"
+        "Mystery", "Mystery"
+    ],
+    "categories": [
+        "Action", "Adventure", "Thriller", "Horror", "Terror", "Fantasy",
+        "Romance", "Drama", "Crime", "Science Fiction", "Programming",
+        "History", "Business", "Satire", "Children", "Poetry",
+        "Biography", "Mystery", "Fitness"
     ]
 }
