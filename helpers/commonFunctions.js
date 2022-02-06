@@ -1,4 +1,5 @@
 const fs = require('fs/promises');
+const fetch = require('node-fetch');
 
 const getJsonData = async (path) => {
     /* Get the local 'bookLabels' JSON file data/Object */
@@ -53,4 +54,32 @@ const manageData = (json, startIndex = 0) => {
     return [correctBook, index];
 };
 
-module.exports = { getJsonData, orderTopics, manageData };
+const booksFilter = async (url) => {
+    /* Filter of the returned books that doesn't have neither a:
+    Thumbnail, Description or Title. */
+    let booksData = [];
+    const books = [];
+
+    // Data fetch, Data conversion from JSON to JS and get 40 raw books data
+    booksData = await fetch(url);
+    booksData = await booksData.json();
+
+    // Books filter process
+    let data; let index = 0;
+    while (books.length < 40) {
+        index += 1;
+        if (index > booksData.items.length) break;
+
+        // Avoid repeated books
+        data = manageData(booksData, index);
+        if (data === null || books.includes(data[0])) continue;
+
+        books.push(data[0]);
+    }
+
+    return books;
+};
+
+module.exports = {
+    getJsonData, orderTopics, manageData, booksFilter,
+};

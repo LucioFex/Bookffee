@@ -1,5 +1,7 @@
 const fetch = require('node-fetch');
-const { getJsonData, orderTopics, manageData } = require('./commonFunctions');
+const {
+    getJsonData, orderTopics, manageData, booksFilter,
+} = require('./commonFunctions');
 
 const getHomeBooks = async () => {
     /* Function to get 12 books data from the Google Books API.
@@ -44,13 +46,13 @@ const getHomeBooks = async () => {
     return books;
 };
 
-const getBooks = async (page = 1, subject = '') => { // Refactor later...
-    let booksData = [];
-    const books = [];
+const getBooks = async (page = 1, subject = '') => {
+    /* Function to return 40 books aprox. Depending on the page's index.
+    It works to return 'general popular books' or 'newest categorized books'.
+    The kind of call will depend in the 'subject' parameter. */
 
     // Checks if the page's number is bigger than 1
     let pageNum = page;
-
     if (pageNum < 1 || typeof (pageNum) !== 'number') pageNum = 1;
     const startIndex = (pageNum - 1) * 12;
 
@@ -82,23 +84,8 @@ const getBooks = async (page = 1, subject = '') => { // Refactor later...
         apiUrl.config += 'relevance';
     }
 
-    // Data fetch, Data conversion to JSON and get 40 raw books data
     const url = apiUrl.api + apiUrl.config + apiUrl.apiKey;
-    booksData = await fetch(url);
-    booksData = await booksData.json();
-
-    // Books filter (by photo, name and description), getting only one per topic
-    let data; let index = 0;
-    while (books.length < 40) {
-        index += 1;
-        if (index > booksData.items.length) break;
-
-        // Avoid repeated books
-        data = manageData(booksData, index);
-        if (data === null || books.includes(data[0])) continue;
-
-        books.push(data[0]);
-    }
+    const books = await booksFilter(url);
 
     return [category, books];
 };
