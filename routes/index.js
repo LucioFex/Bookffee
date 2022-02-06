@@ -13,9 +13,8 @@ router.get('/', async (req, res) => { // Home route
         res.render('home', {
             sectionTitle: 'Home', homeBooks, latestBooks,
         });
-    } catch (err) { // In case there's an error, no books will be displayed
-        res.status(429).render('page-not-found');
-    }
+        // In case there's an error, no books will be displayed
+    } catch (err) { res.status(404).render('page-not-found'); }
 });
 
 router.get('/popular', async (req, res) => { // Popular Books route
@@ -24,17 +23,18 @@ router.get('/popular', async (req, res) => { // Popular Books route
     try {
         const popularBooks = await booksApi.getPopularBooks(page);
         const latestBooks = await booksApi.getRecommendedBooks();
-        res.render('most-popular', {
-            sectionTitle: 'Most Popular', popularBooks, latestBooks, page,
-        });
-    } catch (err) { // In case there's an error, no books will be displayed
-        res.render('most-popular', {
+        res.render('books-section', {
             sectionTitle: 'Most Popular',
-            popularBooks: [],
-            latestBooks: [],
-            page: 1,
+            navbarPopular: ' active',
+            navbarCategories: '',
+            route: 'popular',
+            subject: '',
+            books: popularBooks,
+            latestBooks,
+            page,
         });
-    }
+        // In case there's an error, no books will be displayed
+    } catch (err) { res.status(404).render('page-not-found'); }
 });
 
 router.get('/categories', async (req, res) => { // Categorized Books route
@@ -47,22 +47,18 @@ router.get('/categories', async (req, res) => { // Categorized Books route
         ] = await booksApi.getCategorizedBooks(subject, page);
 
         const latestBooks = await booksApi.getRecommendedBooks();
-        res.render('categories', {
+        res.render('books-section', {
             sectionTitle: `Category: ${subjectName}`,
-            subject: subjectName,
-            subjectBooks,
+            navbarCategories: ' active',
+            navbarPopular: '',
+            subject: `&subject=${subjectName}`,
+            route: 'categories',
+            books: subjectBooks,
             latestBooks,
             page,
         });
-    } catch (err) { // In case there's an error, no books will be displayed
-        res.render('categories', {
-            sectionTitle: 'Category',
-            subjectBooks: [],
-            latestBooks: [],
-            subject: null,
-            page: 1,
-        });
-    }
+        // In case there's an error, no books will be displayed
+    } catch (err) { res.status(404).render('page-not-found'); }
 });
 
 // 404 http status response
