@@ -26,7 +26,7 @@ router.get('/popular', async (req, res) => { // Popular Books route
     const page = parseInt(req.query.page) || 1;
 
     try {
-        const popularBooks = await booksApi.getPopularBooks(page);
+        const [, popularBooks] = await booksApi.getBooks(page);
         const latestBooks = await booksApi.getRecommendedBooks();
         res.render('books-section', {
             sectionTitle: 'Most Popular',
@@ -48,9 +48,7 @@ router.get('/categories', async (req, res) => { // Categorized Books route
     const { subject } = req.query;
 
     try {
-        const [
-            subjectBooks, subjectName,
-        ] = await booksApi.getCategorizedBooks(subject, page);
+        const [subjectName, subjectBooks] = await booksApi.getBooks(page, subject);
 
         const latestBooks = await booksApi.getRecommendedBooks();
         res.render('books-section', {
@@ -65,7 +63,7 @@ router.get('/categories', async (req, res) => { // Categorized Books route
             page,
         });
         // In case there's an error, no books will be displayed
-    } catch (err) { res.status(404).render('page-not-found'); }
+    } catch (err) { console.log(err); res.status(404).render('page-not-found'); }
 });
 
 // 404 http status response

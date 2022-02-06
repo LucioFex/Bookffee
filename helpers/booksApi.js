@@ -83,77 +83,46 @@ const getHomeBooks = async () => {
     return books;
 };
 
-const getPopularBooks = async (page = 0) => {
-    /* Function to return 40 books from the Google Books API.
-    The order of the books is by 'date'.
-    It returns 40 because 12 * 3 = 36, and the pagination can approve that
-    there are still 1 or 2 pages more to check from the current one. */
+const getBooks = async (page = 1, subject = '') => { // Refactor later...
     let booksData = [];
     const books = [];
-    const apiUrl = { // Google Books Api URL
-        api: 'https://www.googleapis.com/books/v1/volumes?q=*',
-        config: '&maxResults=40&orderBy=relevance&startIndex=',
-        apiKey: `&keyes&key=${process.env.apiKey}`,
-    };
-
-    let pageNum = page; // Checks if the page's number is bigger than 1
-    if (page < 1 || typeof (page) !== 'number') pageNum = 1;
-
-    // Fetch to get 12 popular books
-    const startIndex = (pageNum - 1) * 12;
-    const url = apiUrl.api + apiUrl.config + startIndex + apiUrl.apiKey;
-
-    // Data fetch, Data conversion to JSON and get of 40 raw books
-    booksData = await fetch(url);
-    booksData = await booksData.json();
-
-    // Books filter (by photo, name and description), getting only one per topic
-    let data; let index = 0;
-    while (books.length < 40) {
-        index += 1;
-        if (index > booksData.items.length) break;
-
-        // Avoid repeated books
-        data = manageData(booksData, index);
-        if (data === null || books.includes(data[0])) continue;
-
-        books.push(data[0]);
-    }
-    return books;
-};
-
-const getCategorizedBooks = async (subject, page = 0) => {
-    /* Function to return 40 books from the Google Books API.
-    The order of the books is by 'date'.
-    It returns 40 because 12 * 3 = 36, and the pagination can approve that
-    there are still 1 or 2 pages more to check from the current one. */
-    let booksData = [];
-    const books = [];
-    const apiUrl = { // Google Books Api URL
-        api: 'https://www.googleapis.com/books/v1/volumes?q=subject:',
-        config: '&maxResults=40&orderBy=newest&startIndex=',
-        apiKey: `&keyes&key=${process.env.apiKey}`,
-    };
 
     // Checks if the page's number is bigger than 1
     let pageNum = page;
+
     if (pageNum < 1 || typeof (pageNum) !== 'number') pageNum = 1;
+    const startIndex = (pageNum - 1) * 12;
+
+    // Base of the url for the Google Books Api to call
+    const apiUrl = {
+        api: 'https://www.googleapis.com/books/v1/volumes?q=',
+        config: `&maxResults=40&startIndex=${startIndex}&orderBy=`,
+        apiKey: `&keyes&key=${process.env.apiKey}`,
+    };
 
     // Replace the subject if the category is not recognized
+    let categories;
     let category = subject;
-    const { categories } = await getBookLabels('./json/bookLabels.json');
 
-    if (!categories.includes(category)) {
-        category = categories[Math.floor(Math.random() * categories.length)];
+    if (subject !== '') { // It means this is a 'categories' route call
+        categories = await getBookLabels('./json/bookLabels.json');
+        categories = categories.categories;
+
+        // If the category is not recognized, a random one will be added
+        if (!categories.includes(category)) {
+            const randomIndex = Math.floor(Math.random() * categories.length);
+            category = categories[randomIndex];
+        }
+
+        apiUrl.api += `subject:${category}`;
+        apiUrl.config += 'newest';
+    } else if (subject === '') { // It means this is a 'popular' route call
+        apiUrl.api += '*';
+        apiUrl.config += 'relevance';
     }
 
-    // Fetch to get 12 categorized books
-    const startIndex = (pageNum - 1) * 12;
-    const url = (
-        apiUrl.api + category + apiUrl.config + startIndex + apiUrl.apiKey
-    );
-
-    // Data fetch, Data conversion to JSON and get of 40 raw books
+    // Data fetch, Data conversion to JSON and get 40 raw books data
+    const url = apiUrl.api + apiUrl.config + apiUrl.apiKey;
     booksData = await fetch(url);
     booksData = await booksData.json();
 
@@ -169,7 +138,8 @@ const getCategorizedBooks = async (subject, page = 0) => {
 
         books.push(data[0]);
     }
-    return [books, category];
+
+    return [category, books];
 };
 
 const getRecommendedBooks = async () => {
@@ -224,6 +194,4 @@ const getRecommendedBooks = async () => {
     return books;
 };
 
-module.exports = {
-    getHomeBooks, getPopularBooks, getCategorizedBooks, getRecommendedBooks,
-};
+module.exports = { getHomeBooks, getBooks, getRecommendedBooks };
