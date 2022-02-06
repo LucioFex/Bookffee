@@ -63,7 +63,7 @@ router.get('/categories', async (req, res) => { // Categorized Books route
             page,
         });
         // In case there's an error, no books will be displayed
-    } catch (err) { console.log(err); res.status(404).render('page-not-found'); }
+    } catch (err) { res.status(404).render('page-not-found'); }
 });
 
 // 404 http status response
