@@ -1,11 +1,10 @@
 const fetch = require('node-fetch');
 const { getJsonData: getBookLabels } = require('./commonFunctions');
 
-const orderTopics = async () => {
+const orderTopics = async (topics) => {
     /* Function to select and order 12 default books for the 'Home' route */
     let randomTopic;
     const ordenedTopics = [];
-    const { topics } = await getBookLabels('./json/bookLabels.json');
 
     // If the topic is not used already, it's going to be used
     for (let index = 0; ordenedTopics.length <= 12; index += 1) {
@@ -43,7 +42,9 @@ const manageData = (json, startIndex = 0) => {
 };
 
 const getHomeBooks = async () => {
-    /* Function to get 12 books data from the Google Books API */
+    /* Function to get 12 books data from the Google Books API.
+    Every book comes from a different Api Call, and it's from a
+    default list of topics (E.G: Harry+Potter, The+Fourth+Monkey, Joe+Hill) */
     let booksData = [];
     const books = [];
     const topics = await orderTopics();
