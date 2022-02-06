@@ -1,5 +1,6 @@
-<%- include( 'templates/head' , { home: '' , categories: navbarCategories ,
-    popular: navbarPopular, recent: '' , pageStyle: 'css/books-section.css'}) %>
+<%- include( 'templates/head' , { home: navbarHome , categories:
+    navbarCategories , popular: navbarPopular, recent: '' ,
+    pageStyle: 'css/books-section.css' }) %>
 
     <div class='container-md'>
         <section id='main-section'>
@@ -17,7 +18,9 @@
                 <% } %>
             </div>
         </section>
-        <%- include( 'templates/pagination' , { books, route, subject, page }) %>
+        <% if (sectionTitle !== 'Home') { %>
+            <%- include( 'templates/pagination' , { books, route, subject, page }) %>
+        <% } %>
     </div>
 
     <%- include('templates/latest-books') %>

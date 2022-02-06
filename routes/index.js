@@ -10,8 +10,13 @@ router.get('/', async (req, res) => { // Home route
     try {
         const homeBooks = await booksApi.getHomeBooks();
         const latestBooks = await booksApi.getRecommendedBooks();
-        res.render('home', {
-            sectionTitle: 'Home', homeBooks, latestBooks,
+        res.render('books-section', {
+            sectionTitle: 'Home',
+            navbarHome: ' active',
+            navbarPopular: '',
+            navbarCategories: '',
+            books: homeBooks,
+            latestBooks,
         });
         // In case there's an error, no books will be displayed
     } catch (err) { res.status(404).render('page-not-found'); }
@@ -26,6 +31,7 @@ router.get('/popular', async (req, res) => { // Popular Books route
         res.render('books-section', {
             sectionTitle: 'Most Popular',
             navbarPopular: ' active',
+            navbarHome: '',
             navbarCategories: '',
             route: 'popular',
             subject: '',
@@ -50,6 +56,7 @@ router.get('/categories', async (req, res) => { // Categorized Books route
         res.render('books-section', {
             sectionTitle: `Category: ${subjectName}`,
             navbarCategories: ' active',
+            navbarHome: '',
             navbarPopular: '',
             subject: `&subject=${subjectName}`,
             route: 'categories',
