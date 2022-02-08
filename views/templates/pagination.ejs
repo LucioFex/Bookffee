@@ -6,12 +6,12 @@
         <%# Check if there are more than 1 or 2 pages to add 'left arrows' pagination buttons %>
         <% if (page > 2) { %>
             <li class="page-item mx-1">
-                <a class="page-link" href="/<%= route %>?page=1<%= subject %>"><i class="fas fa-angle-double-left"></i></a>
+                <a class="page-link" href="/?<%= query %><%= route %>page=1"><i class="fas fa-angle-double-left"></i></a>
             </li>
         <% } %>
         <% if (page > 1) { %>
             <li class="page-item mx-1">
-                <a class="page-link" href="/<%= route %>?page=<%= page - 1 %><%= subject %>"><i class="fas fa-chevron-left"></i></a>
+                <a class="page-link" href="/?<%= query %><%= route %>page=<%= page - 1 %>"><i class="fas fa-chevron-left"></i></a>
             </li>
         <% } %>
 
@@ -31,13 +31,13 @@
             <% } %>
 
             <li class="page-item <%= activePage %> mx-1">
-                <a class="page-link" href="/<%= route %>?page=<%= index %><%= subject %>"><%= index %></a>
+                <a class="page-link" href="/<%= route %>?<%= query %>page=<%= index %>"><%= index %></a>
             </li>
         <% } %>
 
         <% if (nextPageButton) { %>
             <li class="page-item disabled mx-1"><a class="page-link" id="extra-pages" href="#">. . .</a></li>
-            <li class="page-item mx-1"><a class="page-link" href="/<%= route %>?page=<%= page + 1 %><%= subject %>"><i class="fas fa-chevron-right"></i></a></li>
+            <li class="page-item mx-1"><a class="page-link" href="/<%= route %>?<%= query %>page=<%= page + 1 %>"><i class="fas fa-chevron-right"></i></a></li>
         <% } %>
     </ul>
 </nav>

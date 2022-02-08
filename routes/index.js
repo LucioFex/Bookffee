@@ -28,13 +28,14 @@ router.get('/popular', async (req, res) => { // Popular Books route
     try {
         const [, popularBooks] = await booksApi.getBooks(page);
         const latestBooks = await booksApi.getRecommendedBooks();
+
         res.render('books-section', {
             sectionTitle: 'Most Popular',
-            navbarPopular: ' active',
-            navbarHome: '',
-            navbarCategories: '',
             route: 'popular',
-            subject: '',
+            navbarHome: '',
+            navbarPopular: ' active',
+            navbarCategories: '',
+            query: '',
             books: popularBooks,
             latestBooks,
             page,
@@ -49,21 +50,21 @@ router.get('/categories', async (req, res) => { // Categorized Books route
 
     try {
         const [subjectName, subjectBooks] = await booksApi.getBooks(page, subject);
-
         const latestBooks = await booksApi.getRecommendedBooks();
+
         res.render('books-section', {
             sectionTitle: `Category: ${subjectName}`,
-            navbarCategories: ' active',
+            route: 'categories',
             navbarHome: '',
             navbarPopular: '',
-            subject: `&subject=${subjectName}`,
-            route: 'categories',
+            navbarCategories: ' active',
+            query: `subject=${subjectName}&`,
             books: subjectBooks,
             latestBooks,
             page,
         });
         // In case there's an error, no books will be displayed
-    } catch (err) { console.log(err); res.status(404).render('page-not-found'); }
+    } catch (err) { res.status(404).render('page-not-found'); }
 });
 
 router.get('/search', async (req, res) => { // Searched Books route
@@ -71,17 +72,17 @@ router.get('/search', async (req, res) => { // Searched Books route
     const { q: search } = req.query;
 
     try {
-        const [, subjectBooks] = await booksApi.getBooks(page, '', search);
-
+        const [, searchedBooks] = await booksApi.getBooks(page, '', search);
         const latestBooks = await booksApi.getRecommendedBooks();
+
         res.render('books-section', {
+            route: 'search',
             sectionTitle: `Results for: ${search}`,
-            navbarCategories: '',
             navbarHome: '',
             navbarPopular: '',
-            subject: '',
-            route: 'categories',
-            books: subjectBooks,
+            navbarCategories: '',
+            query: `q=${search}&`,
+            books: searchedBooks,
             latestBooks,
             page,
         });

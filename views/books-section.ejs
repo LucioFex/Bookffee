@@ -19,7 +19,7 @@
             </div>
         </section>
         <% if (sectionTitle !== 'Home') { %>
-            <%- include( 'templates/pagination' , { books, route, subject, page }) %>
+            <%- include( 'templates/pagination' , { books, route, query, page }) %>
         <% } %>
     </div>
 
