@@ -1,6 +1,6 @@
 {
   "name": "Bookffee",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Bookffee is a website to search for books, which allows you to know their prices and synopses, as well as being able to filter them by genre, popularity and date.",
   "main": "app.js",
   "scripts": {
