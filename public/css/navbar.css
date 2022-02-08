@@ -116,6 +116,11 @@ nav {
 }
 
 #search-icon {
+    background: #182f3a;
+    border: none;
+}
+
+#search-icon i {
     color: #f0f0f0;
     cursor: pointer;
     font-size: 43px;
@@ -124,12 +129,12 @@ nav {
     transition: 0.09s ease-in-out;
 }
 
-#search-icon:hover {
+#search-icon i:hover {
     transform: scale(1.1);
     color: #ffcb5c;
 }
 
-#search-icon:active {
+#search-icon i:active {
     transform: scale(0.9);
     color: #fbb723;
 }
@@ -139,7 +144,7 @@ nav {
         font-size: 40px;
     }
 
-    #search-icon, #logo-icon {
+    #search-icon i, #logo-icon {
         display: none;
     }
 

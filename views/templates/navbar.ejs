@@ -63,10 +63,10 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="navbar-nav ms-auto">
-                    <input id="search" class="form-control" type="search"
+                <form action="/search" class="navbar-nav ms-auto" method="POST">
+                    <input id="search" name="q" class="form-control" type="search"
                         placeholder="Search" aria-label="Search book">
-                    <i id="search-icon" class="fas fa-search"></i>
+                    <button id="search-icon" type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
         </div>

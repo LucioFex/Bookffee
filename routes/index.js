@@ -90,6 +90,11 @@ router.get('/search', async (req, res) => { // Searched Books route
     } catch (err) { res.status(404).render('page-not-found'); }
 });
 
+router.post('/search', (req, res) => {
+    const { q: search } = req.body;
+    return res.redirect(`/search?q=${search}&page=1`);
+});
+
 // 404 http status response
 router.use((req, res) => {
     res.status(404).render('page-not-found');
