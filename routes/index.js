@@ -63,6 +63,29 @@ router.get('/categories', async (req, res) => { // Categorized Books route
             page,
         });
         // In case there's an error, no books will be displayed
+    } catch (err) { console.log(err); res.status(404).render('page-not-found'); }
+});
+
+router.get('/search', async (req, res) => { // Searched Books route
+    const page = parseInt(req.query.page) || 1;
+    const { q: search } = req.query;
+
+    try {
+        const [, subjectBooks] = await booksApi.getBooks(page, '', search);
+
+        const latestBooks = await booksApi.getRecommendedBooks();
+        res.render('books-section', {
+            sectionTitle: `Results for: ${search}`,
+            navbarCategories: '',
+            navbarHome: '',
+            navbarPopular: '',
+            subject: '',
+            route: 'categories',
+            books: subjectBooks,
+            latestBooks,
+            page,
+        });
+        // In case there's an error, no books will be displayed
     } catch (err) { res.status(404).render('page-not-found'); }
 });
 

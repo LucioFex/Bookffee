@@ -46,9 +46,10 @@ const getHomeBooks = async () => {
     return books;
 };
 
-const getBooks = async (page = 1, subject = '') => {
+const getBooks = async (page = 1, subject = '', search = '*') => {
     /* Function to return 40 books aprox. Depending on the page's index.
-    It works to return 'general popular books' or 'newest categorized books'.
+    It works to return 'general popular books', 'newest categorized books',
+    or to return the user's search.
     The kind of call will depend in the 'subject' parameter. */
 
     // Checks if the page's number is bigger than 1
@@ -65,29 +66,33 @@ const getBooks = async (page = 1, subject = '') => {
 
     // Replace the subject if the category is not recognized
     let categories;
-    let category = subject;
+    let parameter;
 
-    if (subject !== '') { // It means this is a 'categories' route call
+    if (subject !== '') {
+        // The condition means this is a 'categories' route call
         categories = await getJsonData('./json/bookLabels.json');
         categories = categories.categories;
+        parameter = subject;
 
         // If the category is not recognized, a random one will be added
-        if (!categories.includes(category)) {
+        if (!categories.includes(parameter)) {
             const randomIndex = Math.floor(Math.random() * categories.length);
-            category = categories[randomIndex];
+            parameter = categories[randomIndex];
         }
 
-        apiUrl.api += `subject:${category}`;
+        apiUrl.api += `subject:${parameter}`;
         apiUrl.config += 'newest';
-    } else if (subject === '') { // It means this is a 'popular' route call
-        apiUrl.api += '*';
+    } else if (subject === '') {
+        // The condition means this can be a 'popular' or 'search' route call
+        apiUrl.api += search;
         apiUrl.config += 'relevance';
+        parameter = search;
     }
 
     const url = apiUrl.api + apiUrl.config + apiUrl.apiKey;
     const books = await booksFilter(url);
 
-    return [category, books];
+    return [parameter, books];
 };
 
 const getRecommendedBooks = async () => {
