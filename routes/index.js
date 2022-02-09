@@ -90,7 +90,20 @@ router.get('/search', async (req, res) => { // Searched Books route
     } catch (err) { res.status(404).render('page-not-found'); }
 });
 
+router.get('/books', async (req, res) => { // Book details route
+    const { id: bookId } = req.query; // Google Books Api - Volume Id
+
+    try {
+        // Get all possible book information
+        const bookInfo = await booksApi.getBookInfo(bookId);
+        res.render('book-details', { bookInfo, sectionTitle: 'BookName' });
+
+        // In case there's an error, no books will be displayed
+    } catch (err) { res.status(404).render('page-not-found'); }
+});
+
 router.post('/search', (req, res) => {
+    // Action after the user inputs a book name in the page's searcher
     const { q: search } = req.body;
     return res.redirect(`/search?q=${search}&page=1`);
 });

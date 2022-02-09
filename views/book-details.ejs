@@ -1,4 +1,8 @@
-<%- include('templates/head') %>
+<%- include( 'templates/head' , { home: '' , categories: '' , popular: '' ,
+    recent: '' , pageStyle: 'css/books-details.css' }) %>
 
-    <%- include("templates/latest-books") %>
-    <%- include("templates/footer") %>
+    <div class='container-md'>
+        <h1 class="bg-warning">Book Details Section</h1>
+    </div>
+
+    <%- include('templates/footer') %>
