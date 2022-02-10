@@ -9,11 +9,11 @@
                     <% let bookUrl; %>
                     <% try { %>
                         <%# Test to know if the book is not corrupted %>
-                        <% books[index].volumeInfo.imageLinks.thumbnail %>
+                        <% books[index].volumeInfo.imageLinks.thumbnail; %>
 
                         <%# In case everything is right %>
                         <% bookUrl = `/books?id=${books[index].id}`; %>
-                        <% books[index] = books[index].volumeInfo %>
+                        <% books[index] = books[index].volumeInfo; %>
                     <% } catch (err) { continue }; %>
 
                     <div class='col-md-auto my-3 mx-3 text-center'>

@@ -5,7 +5,11 @@
                 <h3 class="my-3"><i class="fas fa-book"></i>&nbspLatest of <%= latestBooks[col][0] %></h3>
                 <div>
                     <% try { %>
-                        <% latestBooks[col][1].imageLinks.thumbnail %>
+                        <%# Test to know if the book is not corrupted %>
+                        <% latestBooks[col][1].volumeInfo.imageLinks.thumbnail; %>
+                        
+                        <%# In case everything is right %>
+                        <% latestBooks[col][1] = latestBooks[col][1].volumeInfo; %>
                     <% } catch { continue }; %>
 
                     <div class="d-flex mb-3">
@@ -18,7 +22,11 @@
                 </div>
                 <div>
                     <% try { %>
-                        <% latestBooks[col][2].imageLinks.thumbnail %>
+                        <%# Test to know if the book is not corrupted %>
+                        <% latestBooks[col][2].volumeInfo.imageLinks.thumbnail; %>
+                        
+                        <%# In case everything is right %>
+                        <% latestBooks[col][2] = latestBooks[col][2].volumeInfo; %>
                     <% } catch { continue }; %>
 
                     <div class="d-flex mb-3">
