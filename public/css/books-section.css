@@ -74,10 +74,6 @@
     border-color: #dba32b;
 }
 
-/* #pagination #extra-pages {
-    user-select: none;
-} */
-
 @media(max-width: 767px) {
     #main-section div {
         margin-left: 0 !important

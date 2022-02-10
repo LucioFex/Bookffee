@@ -13,7 +13,7 @@ const getHomeBooks = async () => {
     const apiUrl = { // Google Books Api URL
         api: 'https://www.googleapis.com/books/v1/volumes?q=',
         config: '&maxResults=5&orderBy=relevance&startIndex=',
-        apiKey: `&keyes&key=${process.env.apiKey}`,
+        key: `&keyes&key=${process.env.apiKey}`,
     };
 
     // Get the book URLs Fetch (promises) and Fetch of the books data
@@ -21,7 +21,7 @@ const getHomeBooks = async () => {
     for (let index = 0; index < topics.length; index += 1) {
         topic = topics[index];
         startIndex = Math.floor(Math.random() * 5); // Index from 0 to 5
-        url = apiUrl.api + topic + apiUrl.config + startIndex + apiUrl.apiKey;
+        url = apiUrl.api + topic + apiUrl.config + startIndex + apiUrl.key;
 
         booksData.push(fetch(url));
     }
@@ -61,7 +61,7 @@ const getBooks = async (page = 1, subject = '', search = '*') => {
     const apiUrl = {
         api: 'https://www.googleapis.com/books/v1/volumes?q=',
         config: `&maxResults=40&startIndex=${startIndex}&orderBy=`,
-        apiKey: `&keyes&key=${process.env.apiKey}`,
+        key: `&keyes&key=${process.env.apiKey}`,
     };
 
     // Replace the subject if the category is not recognized
@@ -89,7 +89,7 @@ const getBooks = async (page = 1, subject = '', search = '*') => {
         parameter = search;
     }
 
-    const url = apiUrl.api + apiUrl.config + apiUrl.apiKey;
+    const url = apiUrl.api + apiUrl.config + apiUrl.key;
     const books = await booksFilter(url);
 
     return [parameter, books];
@@ -147,9 +147,21 @@ const getRecommendedBooks = async () => {
     return books;
 };
 
-const getBookInfo = (bookId) => {
-    console.log(bookId);
-    return bookId;
+const getBookInfo = async (bookId) => {
+    /* Returns the selected book's data with detail, making a
+    Google Books Api call over the 'volumes' data. */
+    // Url generation
+    const apiUrl = {
+        api: `https://www.googleapis.com/books/v1/volumes/${bookId}`,
+        key: `?keyes&key=${process.env.apiKey}`,
+    };
+    const url = apiUrl.api + apiUrl.key;
+
+    // Api call
+    const request = await fetch(url);
+    const json = await request.json();
+
+    return json;
 };
 
 module.exports = {
