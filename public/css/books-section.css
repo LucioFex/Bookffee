@@ -87,7 +87,11 @@
         width: 95%;
     }
 
-    #main-section .img-link {
-        pointer-events: none;
+    #main-section .book-images:hover {
+        filter: none;
+    }
+
+    #main-section .img-link:hover + .description {
+        opacity: 0%;
     }
 }
