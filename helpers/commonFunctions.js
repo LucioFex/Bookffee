@@ -47,7 +47,7 @@ const manageData = (json, startIndex = 0) => {
             && book.volumeInfo !== undefined
             && book.volumeInfo.description !== undefined
             && book.volumeInfo.imageLinks !== undefined) {
-            correctBook = book.volumeInfo;
+            correctBook = book;
             break;
         }
     }

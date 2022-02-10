@@ -39,7 +39,7 @@
     filter: grayscale(60%) brightness(0.35);
 }
 
-#main-section .book-images:hover + .description {
+#main-section .img-link:hover + .description {
     opacity: 100%;
 }
 
@@ -87,7 +87,7 @@
         width: 95%;
     }
 
-    #main-section .book-images {
+    #main-section .img-link {
         pointer-events: none;
     }
 }

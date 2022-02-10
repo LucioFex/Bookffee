@@ -147,8 +147,11 @@ const getRecommendedBooks = async () => {
     return books;
 };
 
-const getBookInfo = (bookId) => { // Change later
+const getBookInfo = (bookId) => {
+    console.log(bookId);
     return bookId;
 };
 
-module.exports = { getHomeBooks, getBooks, getBookInfo, getRecommendedBooks };
+module.exports = {
+    getHomeBooks, getBooks, getBookInfo, getRecommendedBooks,
+};

@@ -91,7 +91,7 @@ router.get('/search', async (req, res) => { // Searched Books route
 });
 
 router.get('/books', async (req, res) => { // Book details route
-    const { id: bookId } = req.query; // Google Books Api - Volume Id
+    const { id: bookId } = req.query; // Google Books Api (Volume Id)
 
     try {
         // Get all possible book information
