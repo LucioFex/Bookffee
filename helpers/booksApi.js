@@ -161,7 +161,7 @@ const getBookInfo = async (bookId) => {
     const request = await fetch(url);
     const json = await request.json();
 
-    return json.volumeInfo; // Received data converted
+    return json; // Received data converted
 };
 
 module.exports = {

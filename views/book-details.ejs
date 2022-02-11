@@ -3,30 +3,28 @@
 
     <div class="mb-5">
         <section class="container-fluid row justify-content-center banner">
-            <img src="<%=bookInfo.imageLinks.thumbnail %>">
+            <img src="<%= bookInfo.volumeInfo.imageLinks.thumbnail %>">
         </section>
 
         <section class="container-md">
             <div class="book-data">
-                <img src="<%=bookInfo.imageLinks.thumbnail %>">
+                <img src="<%= bookInfo.volumeInfo.imageLinks.thumbnail %>">
                 <div>
-                    <article class="row d-flex justify-content-center">
+                    <article class="row d-table">
                         <div class="col-md-auto">
-                            <h4>Title</h4>
-                            <h4>Author</h4>
-                            <h4>Publisher</h4>
+                            <h4>Title: <%= bookInfo.volumeInfo.title %></h4>
+                            <h4>Author: <%= bookInfo.volumeInfo.authors %></h4>
+                            <h4>Publisher: <%= bookInfo.volumeInfo.publisher %></h4>
                         </div>
                         <div class="col-md-auto">
-                            <h4>Page Account</h4>
-                            <h4>Language</h4>
-                            <h4>Sales Info</h4>
+                            <h4>Page Account: <%= bookInfo.volumeInfo.pageCount %></h4>
+                            <h4>Language: <%= bookInfo.volumeInfo.language %></h4>
+                            <h4>
+                                <%= bookInfo.saleInfo.listPrice.amount %>
+                                <%= bookInfo.saleInfo.listPrice.currencyCode %>
+                            </h4>
                         </div>
                     </article>
-                    <div class="row d-flex justify-content-center">
-                        <p class="col-md-auto">
-                            Description
-                        </p>
-                    </div>
                 </div>
             </div>
         </section>

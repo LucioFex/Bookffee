@@ -9,8 +9,12 @@
     width: 100vw;
     height: 560px;
     object-fit: cover;
-    filter: blur(15px);
     opacity: 0.5;
+    filter: blur(15px);
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
 }
 
 .book-data {
@@ -24,6 +28,7 @@
     position: absolute;
     transform: translateY(-375px);
     box-shadow: 30px 15px 30px #0a0a0a6c;
+    opacity: 0.5;
 }
 
 .book-data {
@@ -31,3 +36,7 @@
     height: 500px;
     color: white;
 }
+
+/* .book-data div {
+
+} */
