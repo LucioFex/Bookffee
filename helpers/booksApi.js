@@ -153,7 +153,7 @@ const getBookInfo = async (bookId) => {
     // Url generation
     const apiUrl = {
         api: `https://www.googleapis.com/books/v1/volumes/${bookId}`,
-        key: `?projection=lite&keyes&key=${process.env.apiKey}`,
+        key: `?projection=full&keyes&key=${process.env.apiKey}`,
     };
     const url = apiUrl.api + apiUrl.key;
 

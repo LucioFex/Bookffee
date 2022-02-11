@@ -7,25 +7,27 @@
         </section>
 
         <section class="container-md">
-            <div class="book-data">
+            <div class="book-presentation">
                 <img src="<%= bookInfo.volumeInfo.imageLinks.thumbnail %>">
-                <div>
-                    <article class="row d-table">
-                        <div class="col-md-auto">
-                            <h4>Title: <%= bookInfo.volumeInfo.title %></h4>
-                            <h4>Author: <%= bookInfo.volumeInfo.authors %></h4>
-                            <h4>Publisher: <%= bookInfo.volumeInfo.publisher %></h4>
+                <article class="row">
+                    <div class="col-md-auto">
+                        <h1><%= bookInfo.volumeInfo.title %></h1>
+                        <div id="book-data" class="row d-flex ms-4 mt-5">
+                            <div class="col-md-auto">
+                                <h3>Author: <%= bookInfo.volumeInfo.authors %></h3>
+                                <h4>Publisher: <%= bookInfo.volumeInfo.publisher %></h4>
+                            </div>
+                            <div class="col-md-auto ms-5">
+                                <p>Page Account: <%= bookInfo.volumeInfo.pageCount %></p>
+                                <p>Language: <%= bookInfo.volumeInfo.language %></p>
+                                <p>Price:
+                                    <%= bookInfo.saleInfo.listPrice.amount %>
+                                    <%= bookInfo.saleInfo.listPrice.currencyCode %>
+                                </p>
+                            </div>
                         </div>
-                        <div class="col-md-auto">
-                            <h4>Page Account: <%= bookInfo.volumeInfo.pageCount %></h4>
-                            <h4>Language: <%= bookInfo.volumeInfo.language %></h4>
-                            <h4>
-                                <%= bookInfo.saleInfo.listPrice.amount %>
-                                <%= bookInfo.saleInfo.listPrice.currencyCode %>
-                            </h4>
-                        </div>
-                    </article>
-                </div>
+                    </div>
+                </article>
             </div>
         </section>
     </div>

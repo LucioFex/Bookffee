@@ -72,12 +72,12 @@
         </div>
     </nav>
 
-    <div class="container-md">
-        <div id="page-title"
-            class="my-5 pb-3 text-center text-white border-bottom border-1 border-secondary">
-            <h1>
-                <%= sectionTitle %>
-            </h1>
+    <% if (sectionTitle) { %>
+        <div class="container-md">
+            <div id="page-title"
+                class="my-5 pb-3 text-center text-white border-bottom border-1 border-secondary">
+                <h1><%= sectionTitle %></h1>
+            </div>
         </div>
-    </div>
+    <% } %>
 </header>
