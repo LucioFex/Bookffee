@@ -1,8 +1,35 @@
 <%- include( 'templates/head' , { home: '' , categories: '' , popular: '' ,
-    recent: '' , pageStyle: 'css/books-details.css' }) %>
+    recent: '' , pageStyle: 'css/book-details.css' }) %>
 
-    <div class='container-md'>
-        <p class='bg-warning'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis et optio iste neque quidem sit ullam explicabo. Itaque tempora neque reiciendis labore vel quis, omnis repellendus, aliquam sequi repellat esse?</p>
+    <div class="mb-5">
+        <section class="container-fluid row justify-content-center banner">
+            <img src="<%=bookInfo.imageLinks.thumbnail %>">
+        </section>
+
+        <section class="container-md">
+            <div class="book-data">
+                <img src="<%=bookInfo.imageLinks.thumbnail %>">
+                <div>
+                    <article class="row d-flex justify-content-center">
+                        <div class="col-md-auto">
+                            <h4>Title</h4>
+                            <h4>Author</h4>
+                            <h4>Publisher</h4>
+                        </div>
+                        <div class="col-md-auto">
+                            <h4>Page Account</h4>
+                            <h4>Language</h4>
+                            <h4>Sales Info</h4>
+                        </div>
+                    </article>
+                    <div class="row d-flex justify-content-center">
+                        <p class="col-md-auto">
+                            Description
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <%- include('templates/footer') %>

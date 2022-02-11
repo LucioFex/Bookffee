@@ -96,7 +96,7 @@ router.get('/books', async (req, res) => { // Book details route
     try {
         // Get all possible book information
         const bookInfo = await booksApi.getBookInfo(bookId);
-        res.render('book-details', { bookInfo, sectionTitle: 'BookName' });
+        res.render('book-details', { bookInfo, sectionTitle: bookInfo.title });
 
         // In case there's an error, no books will be displayed
     } catch (err) { res.status(404).render('page-not-found'); }

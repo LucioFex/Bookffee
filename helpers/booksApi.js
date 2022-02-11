@@ -153,15 +153,15 @@ const getBookInfo = async (bookId) => {
     // Url generation
     const apiUrl = {
         api: `https://www.googleapis.com/books/v1/volumes/${bookId}`,
-        key: `?keyes&key=${process.env.apiKey}`,
+        key: `?projection=lite&keyes&key=${process.env.apiKey}`,
     };
     const url = apiUrl.api + apiUrl.key;
 
-    // Api call
+    // Get of the volumeId data
     const request = await fetch(url);
     const json = await request.json();
 
-    return json;
+    return json.volumeInfo; // Received data converted
 };
 
 module.exports = {
