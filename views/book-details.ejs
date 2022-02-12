@@ -12,18 +12,27 @@
                 <article class="row">
                     <div class="col-md-auto">
                         <h1><%= bookInfo.volumeInfo.title %></h1>
-                        <div id="book-data" class="row d-flex ms-4 mt-5">
+                        <div id="book-data" class="row d-table ms-4 mt-5">
                             <div class="col-md-auto">
-                                <h3>Author: <%= bookInfo.volumeInfo.authors %></h3>
+                                <% if (typeof(bookInfo.volumeInfo.authors) === 'object') { %>
+                                    <h3>Author: <%= bookInfo.volumeInfo.authors[0] %> and others</h3>
+                                <% } else if (typeof(bookInfo.volumeInfo.authors) !== 'object') { %>
+                                    <h3>Author: <%= bookInfo.volumeInfo.authors %></h3>
+                                <% } %>
                                 <h4>Publisher: <%= bookInfo.volumeInfo.publisher %></h4>
                             </div>
-                            <div class="col-md-auto ms-5">
+                            <div class="col-md-auto">
                                 <p>Page Account: <%= bookInfo.volumeInfo.pageCount %></p>
                                 <p>Language: <%= bookInfo.volumeInfo.language %></p>
-                                <p>Price:
-                                    <%= bookInfo.saleInfo.listPrice.amount %>
-                                    <%= bookInfo.saleInfo.listPrice.currencyCode %>
-                                </p>
+                                <p>Published Date: <%= bookInfo.volumeInfo.publishedDate %></p>
+                                <% if (bookInfo.saleInfo.saleability === 'FOR_SALE') { %>
+                                    <p>Price:
+                                        <%= bookInfo.saleInfo.listPrice.amount %>
+                                        <%= bookInfo.saleInfo.listPrice.currencyCode %>
+                                    </p>
+                                <% } else if (bookInfo.saleInfo.saleability === 'NOT_FOR_SALE') { %>
+                                    <p>Price: Not for sale</p>
+                                <% } %>
                             </div>
                         </div>
                     </div>
