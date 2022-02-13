@@ -21,18 +21,37 @@
                                 <% } %>
                                 <h4>Publisher: <%= bookInfo.volumeInfo.publisher %></h4>
                             </div>
-                            <div class="col-md-auto">
-                                <p>Page Account: <%= bookInfo.volumeInfo.pageCount %></p>
-                                <p>Language: <%= bookInfo.volumeInfo.language %></p>
-                                <p>Published Date: <%= bookInfo.volumeInfo.publishedDate %></p>
-                                <% if (bookInfo.saleInfo.saleability === 'FOR_SALE') { %>
-                                    <p>Price:
-                                        <%= bookInfo.saleInfo.listPrice.amount %>
-                                        <%= bookInfo.saleInfo.listPrice.currencyCode %>
+
+                            <div id="extra-data" class="col-md-auto d-flex m-3">
+                                <div>
+                                    <p class="m-4 data-chunk">
+                                        <i class="fas fa-scroll"></i>
+                                        <i>Page Account:&nbsp;</i><%= bookInfo.volumeInfo.pageCount %>
                                     </p>
-                                <% } else if (bookInfo.saleInfo.saleability === 'NOT_FOR_SALE') { %>
-                                    <p>Price: Not for sale</p>
-                                <% } %>
+                                    <p class="m-4 data-chunk">
+                                        <i class="fas fa-language"></i>
+                                        <i>Language:&nbsp;</i><%= bookInfo.volumeInfo.language.toUpperCase() %>
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="m-4 data-chunk">
+                                        <i class="fas fa-calendar-day"></i>
+                                        <i>Published Date:&nbsp;</i><%= bookInfo.volumeInfo.publishedDate %>
+                                    </p>
+                                    <% if (bookInfo.saleInfo.saleability === 'FOR_SALE') { %>
+                                        <p class="m-4 data-chunk">
+                                            <i class="fas fa-dollar-sign"></i>
+                                            <i>Price:&nbsp;</i>
+                                            <%= bookInfo.saleInfo.listPrice.amount %>
+                                            <%= bookInfo.saleInfo.listPrice.currencyCode %>
+                                        </p>
+                                    <% } else if (bookInfo.saleInfo.saleability === 'NOT_FOR_SALE') { %>
+                                        <p class="m-4 data-chunk">
+                                            <i class="fas fa-dollar-sign"></i>
+                                            <i>Price:</i> Not for sale
+                                        </p>
+                                    <% } %>
+                                </div>
                             </div>
                         </div>
                     </div>
