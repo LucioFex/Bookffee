@@ -51,14 +51,23 @@
     transform: translateY(0); /* Fix the opacity bug */
 }
 
+.book-presentation article div h1 {
+    width: fit-content;
+    margin-top: -1.4em;
+    border-radius: 5px;
+    box-shadow: 15px 7.5px 15px #0a0a0a6c;
+    background: #0a0a0a57;
+    transform: translateY(0); /* Fix the opacity bug */
+    border-bottom: 3px solid #f0b33163;
+}
+
+#book-data {
+    border: 3px solid #0c1b22c7;
+    border-radius: 10px;
+}
+
 .data-chunk {
     font-size: 1.3em;
-    border: 3px solid #a37a22;
-    padding: 5px;
-    border-radius: 5px;
-    background: #f0b331;
-    color: #000000;
-    font-weight: bold;
 }
 
 .data-chunk i:first-child {
@@ -66,6 +75,26 @@
 }
 
 .data-chunk i:last-child {
-    font-weight: bolder;
+    font-weight: bold;
     font-style: normal;
+}
+
+.main-data {
+    font-weight: bold;
+}
+
+#page-account {
+    color: #e6b347;
+}
+
+#published-date {
+    color: #d42e49;
+}
+
+#language {
+    color: #ac52e9;
+}
+
+#price {
+    color: #37d1a2;
 }

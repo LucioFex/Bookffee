@@ -12,42 +12,42 @@
                 <article class="row">
                     <div class="col-md-auto">
                         <h1><%= bookInfo.volumeInfo.title %></h1>
-                        <div id="book-data" class="row d-table ms-4 mt-5">
+                        <div class="row d-table ms-4 mt-5">
                             <div class="col-md-auto">
                                 <% if (typeof(bookInfo.volumeInfo.authors) === 'object') { %>
-                                    <h3>Author: <%= bookInfo.volumeInfo.authors[0] %> and others</h3>
+                                    <h3><i class="main-data">Author:</i>&nbsp; <%= bookInfo.volumeInfo.authors[0] %>, and others</h3>
                                 <% } else if (typeof(bookInfo.volumeInfo.authors) !== 'object') { %>
-                                    <h3>Author: <%= bookInfo.volumeInfo.authors %></h3>
+                                    <h3><i class="main-data">Author:</i>&nbsp; <%= bookInfo.volumeInfo.authors %></h3>
                                 <% } %>
-                                <h4>Publisher: <%= bookInfo.volumeInfo.publisher %></h4>
+                                <h4><i class="main-data">Publisher:</i>&nbsp; <%= bookInfo.volumeInfo.publisher %></h4>
                             </div>
 
-                            <div id="extra-data" class="col-md-auto d-flex m-3">
+                            <div id="book-data" class="col-md-auto d-flex m-3">
                                 <div>
                                     <p class="m-4 data-chunk">
-                                        <i class="fas fa-scroll"></i>
+                                        <i id="page-account" class="fas fa-scroll"></i>
                                         <i>Page Account:&nbsp;</i><%= bookInfo.volumeInfo.pageCount %>
                                     </p>
                                     <p class="m-4 data-chunk">
-                                        <i class="fas fa-language"></i>
+                                        <i id="language" class="fas fa-language"></i>
                                         <i>Language:&nbsp;</i><%= bookInfo.volumeInfo.language.toUpperCase() %>
                                     </p>
                                 </div>
                                 <div>
                                     <p class="m-4 data-chunk">
-                                        <i class="fas fa-calendar-day"></i>
+                                        <i id="published-date" class="fas fa-calendar-day"></i>
                                         <i>Published Date:&nbsp;</i><%= bookInfo.volumeInfo.publishedDate %>
                                     </p>
                                     <% if (bookInfo.saleInfo.saleability === 'FOR_SALE') { %>
                                         <p class="m-4 data-chunk">
-                                            <i class="fas fa-dollar-sign"></i>
+                                            <i id="price" class="fas fa-dollar-sign"></i>
                                             <i>Price:&nbsp;</i>
                                             <%= bookInfo.saleInfo.listPrice.amount %>
                                             <%= bookInfo.saleInfo.listPrice.currencyCode %>
                                         </p>
                                     <% } else if (bookInfo.saleInfo.saleability === 'NOT_FOR_SALE') { %>
                                         <p class="m-4 data-chunk">
-                                            <i class="fas fa-dollar-sign"></i>
+                                            <i id="price" class="fas fa-dollar-sign"></i>
                                             <i>Price:</i> Not for sale
                                         </p>
                                     <% } %>
