@@ -18,8 +18,9 @@
 }
 
 .book-presentation {
-    width: 50px;
-    height: 50px;
+    width: 100%;
+    color: white;
+    /* background:rgb(26, 56, 42); */
 }
 
 .book-presentation img {
@@ -30,16 +31,9 @@
     box-shadow: 30px 15px 30px #0a0a0a6c;
 }
 
-.book-presentation {
-    width: 100%;
-    height: 500px;
-    color: white;
-    /* background:rgb(26, 56, 42); just for testing */
-}
-
 .book-presentation article {
     margin-left: 375px;
-    /* background: rgb(39, 26, 56); just for testing */
+    /* background: rgb(39, 26, 56); */
 }
 
 .book-presentation article div h1 {
@@ -62,6 +56,7 @@
 }
 
 #book-data {
+    width: fit-content;
     border: 3px solid #0c1b22c7;
     border-radius: 10px;
 }
@@ -97,4 +92,9 @@
 
 #price {
     color: #37d1a2;
+}
+
+#description p {
+    font-size: 16px;
+    text-align: justify;
 }
