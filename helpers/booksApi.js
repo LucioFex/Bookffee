@@ -147,6 +147,13 @@ const getRecommendedBooks = async () => {
     return books;
 };
 
+const reduceDescription = (description) => {
+    /* Divides the 'description' key in an array of two versions:
+    A 'full' and a 'lite' version */
+    const shortTextLimit = description.indexOf('<br>', 525);
+    return [description, description.slice(0, shortTextLimit)];
+};
+
 const getBookInfo = async (bookId) => {
     /* Returns the selected book's data with detail, making a
     Google Books Api call over the 'volumes' data. */
@@ -161,6 +168,7 @@ const getBookInfo = async (bookId) => {
     const request = await fetch(url);
     const json = await request.json();
 
+    json.volumeInfo.description = reduceDescription(json.volumeInfo.description);
     return json; // Received data converted
 };
 

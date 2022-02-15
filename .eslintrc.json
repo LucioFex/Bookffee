@@ -16,6 +16,7 @@
         "linebreak-style": ["off", "windows"],
         "no-continue": "off",
         "radix": "off",
-        "no-constant-condition": "off"
+        "no-constant-condition": "off",
+        "no-param-reassign": "off"
     }
 }

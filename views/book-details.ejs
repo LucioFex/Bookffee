@@ -53,9 +53,14 @@
                                     <% } %>
                                 </div>
                             </div>
-                            <div id="description" class="mt-4">
-                                <h3 class="class="fs-3" main-data">Synopsis:</h3>
-                                <p><%- bookInfo.volumeInfo.description %></p> <%# Add a "show all" button later... %>
+                            <div class="mt-4">
+                                <h3 class="main-data">Synopsis:</h3>
+                                <%# Add a "show all" button later... %>
+                                <% if (bookInfo.volumeInfo.description[0].length <= 525) { %>
+                                    <p id="description"><%- bookInfo.volumeInfo.description[0] %></p>
+                                <% } else if (bookInfo.volumeInfo.description[0].length > 525) { %>
+                                    <p id="description"><%- bookInfo.volumeInfo.description[1] %></p>
+                                <% } %>
                             </div>
                         </div>
                     </div>
