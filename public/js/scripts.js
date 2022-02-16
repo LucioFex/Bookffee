@@ -26,7 +26,10 @@ const showDescription = () => {
     bookDescription.innerHTML = newDescription;
 
     // Now the 'Read More' button gets into 'Read Less' (or vice versa)
-    descriptionButton.textContent = 'Read Less';
+    let buttonText = descriptionButton.textContent;
+    buttonText = buttonText === 'Read More' ? 'Read Less' : 'Read More';
+
+    descriptionButton.textContent = buttonText;
     descriptionButton.value = oldDescription;
 };
 
