@@ -58,12 +58,12 @@
                                 <%# Add a "show all" button later... %>
                                 <% if (bookInfo.volumeInfo.description[0].length <= 525) { %>
                                     <p id="description"><%- bookInfo.volumeInfo.description[0] %></p>
-
+                                    </div>
                                 <% } else if (bookInfo.volumeInfo.description[0].length > 525) { %>
                                     <p id="description"><%- bookInfo.volumeInfo.description[1] %></p>
-                                    <button class="btn" id ="description-btn" value="<%= bookInfo.volumeInfo.description[0] %>">Read More</button>
+                                    </div>
+                                    <button class="btn ms-2" id ="description-btn" value="<%= bookInfo.volumeInfo.description[0] %>">Read More</button>
                                 <% } %>
-                            </div>
                         </div>
                     </div>
                 </article>
