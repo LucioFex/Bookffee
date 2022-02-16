@@ -93,3 +93,16 @@
 #price {
     color: #37d1a2;
 }
+
+#synopsis {
+    transition: all 1s ease-in-out;
+}
+
+#description-btn {
+    background: #e6b347;
+    font-weight: bolder;
+}
+
+#description-btn:hover {
+    background: #fbc757;
+}

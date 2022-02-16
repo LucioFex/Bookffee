@@ -97,7 +97,7 @@
     display: flex;
 }
 
-#copiedMessage {
+#copied-message {
     transform: scale(1.13);
     position: relative;
     top: -5px;
@@ -112,7 +112,7 @@
     transition: 0.3s ease-in-out;
 }
 
-#copiedMessage:after {
+#copied-message:after {
     content: "";
     position: absolute;
     top: 14.5px;
