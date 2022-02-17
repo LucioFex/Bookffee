@@ -7,8 +7,9 @@
         </section>
 
         <section class="container-md">
-            <div class="book-presentation">
+            <div class="d-flex book-presentation">
                 <img src="<%= bookInfo.volumeInfo.imageLinks.thumbnail %>">
+                <a href="<%= bookInfo.volumeInfo.infoLink %>"><button id="more-info" class="btn">More Information</button></a>
                 <article class="row">
                     <div class="col-md-auto">
                         <h1><%= bookInfo.volumeInfo.title %></h1>
@@ -55,7 +56,6 @@
                             </div>
                             <div class="mt-4">
                                 <h3 class="main-data">Synopsis:</h3>
-                                <%# Add a "show all" button later... %>
                                 <% if (bookInfo.volumeInfo.description[0].length <= 525) { %>
                                     <p id="description"><%- bookInfo.volumeInfo.description[0] %></p>
                                     </div>

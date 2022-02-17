@@ -20,6 +20,7 @@
 .book-presentation {
     width: 100%;
     color: white;
+    position: relative;
     /* background:rgb(26, 56, 42); */
 }
 
@@ -31,9 +32,21 @@
     box-shadow: 30px 15px 30px #0a0a0a6c;
 }
 
+.book-presentation #more-info {
+    width: 375px;
+    position: absolute;
+    top: calc(375px / 2 + 50px);
+    background: #e6b347;
+    font-weight: bolder;
+}
+
+.book-presentation #more-info:hover {
+    background: #fbc757;
+}
+
 .book-presentation article {
     margin-left: 375px;
-    /* background: rgb(39, 26, 56); */
+    /* background: rgb(39, 26, 56);*/
 }
 
 .book-presentation article div h1 {
@@ -99,11 +112,13 @@
 }
 
 #description-btn {
-    background: #e6b347;
+    background: #2cbb9036;
+    color: #f6f6f6;
     width: fit-content;
     font-weight: bolder;
 }
 
 #description-btn:hover {
-    background: #fbc757;
+    background: #40dfafd8;
+    color: #050505;
 }
