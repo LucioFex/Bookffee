@@ -1,9 +1,9 @@
 <section class="container-md mb-5 mt-3">
     <div class="row justify-content-around">
+        <% let bookUrl; %>
         <% for (let col = 0; col < latestBooks.length; col += 1) { %>
             <div class="col-md latest-books">
                 <h3 class="my-3"><i class="fas fa-book"></i>&nbspLatest of <%= latestBooks[col][0] %></h3>
-                <% let bookUrl; %>
                 <div>
                     <% for (let row = 1; row <= 2; row += 1) { %>
                         <% try { %>
@@ -16,9 +16,9 @@
                         <% } catch { continue }; %>
 
                         <div class="d-flex mb-3">
-                            <img src="<%= latestBooks[col][row].imageLinks.thumbnail%>" alt="Sample Book">
+                            <a href="<%= bookUrl %>"><img src="<%= latestBooks[col][row].imageLinks.thumbnail%>" alt="Sample Book"></a>
                             <div class="mb-3">
-                                <h4 class="ms-3 mb-1"><%= latestBooks[col][row].title %></h4>
+                                <a href="<%= bookUrl %>"><h4 class="ms-3 mb-1"><%= latestBooks[col][row].title %></h4></a>
                                 <p class="ms-3"><%= latestBooks[col][row].description.slice(0, 220) + "..." %></p>
                             </div>
                         </div>
