@@ -28,3 +28,9 @@ html, body {
     top: 0;
     left: 0;
 }
+
+/* Removes the Bootstrap button's border focus */
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
