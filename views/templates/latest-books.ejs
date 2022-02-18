@@ -5,41 +5,24 @@
                 <h3 class="my-3"><i class="fas fa-book"></i>&nbspLatest of <%= latestBooks[col][0] %></h3>
                 <% let bookUrl; %>
                 <div>
-                    <% try { %>
-                        <%# Test to know if the book is not corrupted %>
-                        <% latestBooks[col][1].volumeInfo.imageLinks.thumbnail; %>
-                        
-                        <%# In case everything is right %>
-                        <% bookUrl = `/books?id=${latestBooks[col][1].id}`; %>
-                        <% console.log(bookUrl) %>
-                        <% latestBooks[col][1] = latestBooks[col][1].volumeInfo; %>
-                    <% } catch { continue }; %>
+                    <% for (let row = 1; row <= 2; row += 1) { %>
+                        <% try { %>
+                            <%# Test to know if the book is not corrupted %>
+                            <% latestBooks[col][row].volumeInfo.imageLinks.thumbnail; %>
+                            
+                            <%# In case everything is right %>
+                            <% bookUrl = `/books?id=${latestBooks[col][row].id}`; %>
+                            <% latestBooks[col][row] = latestBooks[col][row].volumeInfo; %>
+                        <% } catch { continue }; %>
 
-                    <div class="d-flex mb-3">
-                        <img src="<%= latestBooks[col][1].imageLinks.thumbnail%>" alt="Sample Book">
-                        <div class="mb-3">
-                            <h4 class="ms-3 mb-1"><%= latestBooks[col][1].title %></h4>
-                            <p class="ms-3"><%= latestBooks[col][1].description.slice(0, 220) + "..." %></p>
+                        <div class="d-flex mb-3">
+                            <img src="<%= latestBooks[col][row].imageLinks.thumbnail%>" alt="Sample Book">
+                            <div class="mb-3">
+                                <h4 class="ms-3 mb-1"><%= latestBooks[col][row].title %></h4>
+                                <p class="ms-3"><%= latestBooks[col][row].description.slice(0, 220) + "..." %></p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div>
-                    <% try { %>
-                        <%# Test to know if the book is not corrupted %>
-                        <% latestBooks[col][2].volumeInfo.imageLinks.thumbnail; %>
-                        
-                        <%# In case everything is right %>
-                        <% bookUrl = `/books?id=${latestBooks[col][2].id}`; %>
-                        <% latestBooks[col][2] = latestBooks[col][2].volumeInfo; %>
-                    <% } catch { continue }; %>
-
-                    <div class="d-flex mb-3">
-                        <img src="<%= latestBooks[col][2].imageLinks.thumbnail %>" alt="Sample Book">
-                        <div class="mb-3">
-                            <h4 class="ms-3 mb-1"><%= latestBooks[col][2].title %></h4>
-                            <p class="ms-3"><%= latestBooks[col][2].description.slice(0, 237) + "..." %></p>
-                        </div>
-                    </div>
+                    <% } %>
                 </div>
             </div>
         <% } %>
