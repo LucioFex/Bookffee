@@ -30,7 +30,7 @@
     position: absolute;
     transform: translateY(-375px);
     box-shadow: 30px 15px 30px #0a0a0a6c;
-    border-radius: 5x;
+    border-radius: 5px;
 }
 
 .book-presentation #more-info {
@@ -48,7 +48,7 @@
 
 .book-presentation article {
     margin-left: 375px;
-    /* background: rgb(39, 26, 56);*/
+    /* background: rgb(39, 26, 56); */
 }
 
 .book-presentation article div h1 {
@@ -57,16 +57,7 @@
     border-radius: 5px;
     box-shadow: 15px 7.5px 15px #0a0a0a6c;
     background: #0a0a0a57;
-    transform: translateY(0); /* Fix the opacity bug */
-}
-
-.book-presentation article div h1 {
-    width: fit-content;
-    margin-top: -1.4em;
-    border-radius: 5px;
-    box-shadow: 15px 7.5px 15px #0a0a0a6c;
-    background: #0a0a0a57;
-    transform: translateY(0); /* Fix the opacity bug */
+    transform: translateY(0); /* Fixes the opacity bug */
     border-bottom: 3px solid #f0b33163;
 }
 
@@ -123,4 +114,31 @@
 #description-btn:hover {
     background: #40dfafd8;
     color: #050505;
+}
+
+@media (max-width: 767px) {
+    .book-presentation {
+        top: -150px;
+    }
+    .book-presentation img, .book-presentation #more-info {
+        /* margin-left: 50px; */
+        margin-left: 3vw;
+    }
+
+    .book-presentation article {
+        bottom: -100px;
+    }
+
+    .book-presentation article div h1 {
+        width: 375px;
+        text-align: center !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .book-presentation article {
+        width: 75vw;
+        margin-left: 0;
+        margin-top: 400px;
+    }
 }
