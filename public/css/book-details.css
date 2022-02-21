@@ -116,26 +116,45 @@
     color: #050505;
 }
 
-@media (max-width: 767px) {
-    .book-presentation {
-        top: -150px;
+
+@media (max-width: 508px) {
+    #book-data {
+        display: block !important;
     }
-    .book-presentation img, .book-presentation #more-info {
-        /* margin-left: 50px; */
-        margin-left: 3vw;
+}
+
+@media (max-width: 767px) {
+    .banner {
+        height: 180px;
+    }
+
+    .book-presentation {
+        margin-top: 250px;
+    }
+
+    .book-presentation img, .book-presentation #more-info, .book-presentation article div h1 {
+        left: 0;
+        right: 0;
+        margin: auto;
     }
 
     .book-presentation article {
-        bottom: -100px;
+        width: 93vw !important;
+    };
+
+    .book-presentation img {
+        width: 320px;
+        height: calc(320px * 1.609);
     }
 
-    .book-presentation article div h1 {
-        width: 375px;
+    .book-presentation #more-info, .book-presentation article div h1 {
         text-align: center !important;
+        width: 320px;
     }
 }
 
 @media (max-width: 991px) {
+    
     .book-presentation article {
         width: 75vw;
         margin-left: 0;
