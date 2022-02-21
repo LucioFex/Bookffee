@@ -116,6 +116,20 @@
     color: #050505;
 }
 
+@media (max-width: 285px) {
+    .book-presentation img { /* Apparenly, it "updates" the size on mobiles */
+        width: 250px !important;
+        height: calc(250px * 1.609) !important;
+    }
+
+    .book-presentation #more-info, .book-presentation article div h1 {
+        width: 250px !important;
+    }
+
+    .book-presentation #more-info {
+        top: 150px;
+    }
+}
 
 @media (max-width: 566px) {
     .book-presentation img { /* Apparenly, it "updates" the size on mobiles */

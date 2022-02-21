@@ -43,7 +43,7 @@ the opening of an issue to check the change you want to make.
 
 ## Project Status:
 
-### `Version: 0.11.9` | `Still in Development`
+### `Version: 0.11.10` | `Still in Development`
 <!-- <h3><i>You can access Bookffee by clicking <a href="" target="_blank">here</a>.</i></h3> -->
 
 ## License
