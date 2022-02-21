@@ -117,7 +117,20 @@
 }
 
 
-@media (max-width: 508px) {
+@media (max-width: 566px) {
+    .book-presentation img { /* Apparenly, it "updates" the size on mobiles */
+        width: 320px;
+        height: calc(320px * 1.609);
+    }
+
+    .book-presentation #more-info {
+        margin-top: -90px !important;
+    }
+
+    .book-presentation article div h1 {
+        margin-top: -120px !important;
+    }
+
     #book-data {
         display: block !important;
     }
