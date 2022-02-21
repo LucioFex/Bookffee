@@ -21,7 +21,6 @@
     width: 100%;
     color: white;
     position: relative;
-    /* background:rgb(26, 56, 42); */
 }
 
 .book-presentation img {
@@ -48,7 +47,6 @@
 
 .book-presentation article {
     margin-left: 375px;
-    /* background: rgb(39, 26, 56); */
 }
 
 .book-presentation article div h1 {
