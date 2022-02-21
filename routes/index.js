@@ -103,6 +103,20 @@ router.get('/books', async (req, res) => { // Book details route
     } catch (err) { res.status(404).render('page-not-found'); }
 });
 
+router.get('/terms-conditions', async (req, res) => { // Terms & Conditions route
+    try {
+        res.render('terms-conditions', { sectionTitle: 'Terms & Conditions' });
+        // In case there's an error, redirect the user to the 404 error page
+    } catch (err) { res.status(404).render('page-not-found'); }
+});
+
+router.get('/privacy-policy', async (req, res) => { // Privacy Policy route
+    try {
+        res.render('privacy-policy', { sectionTitle: 'Privacy Policy' });
+        // In case there's an error, redirect the user to the 404 error page
+    } catch (err) { res.status(404).render('page-not-found'); }
+});
+
 router.post('/search', (req, res) => {
     // Action after the user inputs a book name in the page's searcher
     const { q: search } = req.body;

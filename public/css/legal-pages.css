@@ -1,0 +1,13 @@
+#main-section {
+    color: #fafafa;
+}
+
+#main-section a {
+    color: #eeb842;
+    transition: color 0.25s ease-in-out !important;
+}
+
+#main-section a:hover {
+    color: #ffcb5c;
+}
+

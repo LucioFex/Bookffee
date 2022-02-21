@@ -72,7 +72,7 @@
         </div>
     </nav>
 
-    <% if (sectionTitle) { %>
+    <% if (sectionTitle && !["Terms & Conditions", "Privacy Policy"].includes(sectionTitle)) { %>
         <div class="container-md">
             <div id="page-title"
                 class="my-5 pb-3 text-center text-white border-bottom border-1 border-secondary">
