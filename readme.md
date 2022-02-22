@@ -9,8 +9,8 @@
 ### Bookffee is a website to search for books, which allows you to know their prices and synopses, as well as being able to filter them by genre, popularity and date.
 
 <p align="center">
-    <img src="public/src/public-image1.png" alt="Bookffee sample img" width="1000"/>
-    <img src="public/src/public-image2.png" alt="Bookffee sample img" width="1000"/>
+    <img src="public/src/public-image1.gif" alt="Bookffee sample img" width="1000"/>
+    <img src="public/src/public-image2.gif" alt="Bookffee sample img" width="1000"/>
 </p>
 
 ## Technologies used in the project:
