@@ -43,7 +43,7 @@ the opening of an issue to check the change you want to make.
 
 ## Project Status:
 
-### `Version: 1.1.1`
+### `Version: 1.1.2`
 <h3><i>You can access the Bookffee website by clicking <a href="https://bookffee.herokuapp.com/" target="_blank">here</a>.</i></h3>
 
 ## License
