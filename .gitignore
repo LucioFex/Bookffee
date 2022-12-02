@@ -4,3 +4,4 @@ concept
 .env
 package-lock.json
 requests.rest
+.vercel
